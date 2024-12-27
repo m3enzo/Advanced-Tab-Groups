@@ -6,7 +6,7 @@ Advanced Tab Group CSS for Zen Browser
 
 **Notice ⚠️**
 
-_Until this is added as a mod in the Zen Mods store you will have to add the following booleans to about:config to me able to use this CSS_
+_Until this is added as a mod in the Zen Mods store you will have to add the following booleans to about:config to be able to use this CSS_
 
 
 ------------
