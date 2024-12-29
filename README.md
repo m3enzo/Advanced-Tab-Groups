@@ -1,8 +1,7 @@
 # Advanced Tab Groups
 Advanced Tab Group CSS for Zen Browser
 
-
-![Screenshot 2024-12-26 214226](https://github.com/user-attachments/assets/88b43e94-0d41-4d2c-a7e1-a9628c268b5e)
+![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)
 
 **Notice ⚠️**
 
