@@ -17,7 +17,7 @@ _If you are not familiar with user chrome.css please refer to [this document](ht
 
 * Copy the CSS from the respitory into the user chrome.css file
 
-* Add the config booleans listed below and toggle them to your liking 
+* Add the config booleans listed below into about:config and toggle them to your liking 
 
 * Enjoy!
 ------------
@@ -40,7 +40,7 @@ This theme adds CSS for the experimental Firefox tab groups to make them functio
 
 **How Do I Enable Tab Groups?**
 
-go to about confing and enable `browser.tabs.groups.enabled`
+go to about:config and enable `browser.tabs.groups.enabled`
 
 ### What Are The Customization Options?
 * Add a background to the tab groups that uses the tab group color like this:
@@ -55,7 +55,7 @@ go to about confing and enable `browser.tabs.groups.enabled`
 
 
 ![Screenshot 2024-12-26 212910](https://github.com/user-attachments/assets/2c5ca1f7-1920-45b0-9a26-ae3be13a6772)
-* Make the folder icon match the tab group color, allowing you to easily diffrentiate different groups
+* Make the folder icon match the tab group color, allowing you to easily different different groups
 
   
 ![Screenshot 2024-12-26 213548](https://github.com/user-attachments/assets/f4d3f8c7-f716-47b3-8812-01b2f3a5ca69)
