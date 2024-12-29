@@ -1,11 +1,13 @@
 # Advanced Tab Groups
-Advanced Tab Group CSS for Zen Browser
+Advanced Tab Group CSS for Zen Browser using userChrome.css
 
 ![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)
 
 **Notice ⚠️**
 
 _Until this is added as a mod in the Zen Mods store you will have to add the following booleans to about:config to be able to use this CSS_
+
+_If you are not familiar with user chrome.css please refer to [this document](https://docs.zen-browser.app/guides/live-editing) (so sorry I forgot to mention this sooner, if you have any issues create an issue please.)
 
 
 ------------
