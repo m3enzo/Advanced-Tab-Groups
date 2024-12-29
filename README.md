@@ -18,6 +18,8 @@ _Until this is added as a mod in the Zen Mods store you will have to add the fol
 
 `tab.groups.theme-folders`
 
+`tab.groups.fill-folders`
+
 ## Highly Customizable Tab Groups
 **What Does This Do?**
 
@@ -46,5 +48,8 @@ go to about confing and enable `browser.tabs.groups.enabled`
 ![Screenshot 2024-12-26 213548](https://github.com/user-attachments/assets/f4d3f8c7-f716-47b3-8812-01b2f3a5ca69)
 
 (my personal favorite, with the arrow)
+
+
+* Fill the folder icon with your selected tab color (or no color if that is your chosen prefrence)
 ---------------
 If you have any features you would like to see, pleasestart a disccusion and I would be glad to do anything Zen CSS related :)
