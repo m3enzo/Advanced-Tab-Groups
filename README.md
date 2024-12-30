@@ -1,77 +1,89 @@
-# Advanced Tab Groups
-Advanced Tab Group CSS for Zen Browser using userChrome.css
+# Advanced Tab Groups  
 
-![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)
+CSS for Zen Browser's experimental Tab Groups using `userChrome.css`.  
 
-**Credit listed at bottom**
+![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)  
 
-**Notice ⚠️**
+---
 
-_Until this is added as a mod in the Zen Mods store you will have to add the following booleans to about:config to be able to use this CSS_
+## ⚠️ Notice  
 
-_If you are not familiar with user chrome.css please refer to [this document](https://docs.zen-browser.app/guides/live-editing) (so sorry I forgot to mention this sooner, if you have any issues create an issue please.)_
+_This feature requires manual setup until it becomes available in the Zen Mods store._  
+_To use this CSS, you must configure Zen Browser's `userChrome.css` and enable certain preferences in `about:config`._  
 
+If you're unfamiliar with `userChrome.css`, please refer to [this guide](https://docs.zen-browser.app/guides/live-editing). If you encounter any issues, feel free to create an issue on this repository.  
 
------------
-**How do I use this?**
+---
 
-* enable browser.tabs.groups.enabled in about:config to use Firefox tab groups (works in all versions of Zen Browser)
+## How to Use  
 
-* Set up Zen userChrome.css using the link above
+1. Enable `browser.tabs.groups.enabled` in `about:config` to activate Firefox's experimental Tab Groups feature (works in all versions of Zen Browser).  
+2. Follow [this guide](https://docs.zen-browser.app/guides/live-editing) to set up `userChrome.css`.  
+3. Copy the CSS from this repository into your `userChrome.css` file.  
+4. Add the configuration booleans listed below in `about:config` and adjust them to your liking.  
+5. Enjoy your customized tab groups!  
 
-* Copy the CSS from the respitory into the user chrome.css file
+---
 
-* Add the config booleans listed below into about:config and toggle them to your liking 
+## Configuration Options  
 
-* Enjoy!
-------------
-**Preferences**
+Add these preferences to `about:config` to enable additional features:  
 
-`tab.groups.add-arrow`
+- **`tab.groups.add-arrow`**  
+- **`tab.groups.background`**  
+- **`tab.groups.borders`**  
+- **`tab.groups.theme-folders`**  
+- **`tab.groups.fill-folders`**  
 
-`tab.groups.background`
+---
 
-`tab.groups.borders`
+## What Does This Do?  
 
-`tab.groups.theme-folders`
+This CSS improves the functionality and appearance of Zen Browser's experimental Tab Groups.  
 
-`tab.groups.fill-folders`
+---
 
-## Highly Customizable Tab Groups
-**What Does This Do?**
+## Features  
 
-This theme adds CSS for the experimental Firefox tab groups to make them function and look much better.
+### 1. **Custom Background for Tab Groups**  
+Apply a background that matches the tab group color for a cleaner and more cohesive look.  
 
-**How Do I Enable Tab Groups?**
+![Background Example](https://github.com/user-attachments/assets/336f1da8-1c13-47ff-a0d1-c933abf3f6f6)  
 
-go to about:config and enable `browser.tabs.groups.enabled`
+---
 
-### What Are The Customization Options?
-* Add a background to the tab groups that uses the tab group color like this:
+### 2. **Border Around Tab Groups**  
+Add a subtle border to enhance the visual separation of tab groups (requires background to be enabled).  
 
-  
-![Screenshot 2024-12-26 212753](https://github.com/user-attachments/assets/336f1da8-1c13-47ff-a0d1-c933abf3f6f6)
-* Add a slight border to the background to make it feel more flush in some peoples opinion _(only works with background enabled)_
+![Border Example](https://github.com/user-attachments/assets/197e942e-e3d3-431c-8479-2a0c5aeac4b7)  
 
+---
 
-![image](https://github.com/user-attachments/assets/197e942e-e3d3-431c-8479-2a0c5aeac4b7)
-* Add an arrow to the tab group that displays if the folder is open or closed
+### 3. **Expandable Tab Groups with Arrows**  
+Add an arrow icon to indicate whether a tab group folder is open or closed.  
 
+![Arrow Example](https://github.com/user-attachments/assets/2c5ca1f7-1920-45b0-9a26-ae3be13a6772)  
 
-![Screenshot 2024-12-26 212910](https://github.com/user-attachments/assets/2c5ca1f7-1920-45b0-9a26-ae3be13a6772)
-* Make the folder icon match the tab group color, allowing you to easily different different groups
+---
 
-  
-![Screenshot 2024-12-26 213548](https://github.com/user-attachments/assets/f4d3f8c7-f716-47b3-8812-01b2f3a5ca69)
+### 4. **Themed Folder Icons**  
+Color folder icons based on the tab group color to visually differentiate groups.  
 
-(my personal favorite, with the arrow)
+![Folder Color Example](https://github.com/user-attachments/assets/f4d3f8c7-f716-47b3-8812-01b2f3a5ca69)  
 
+---
 
-* Fill the folder icon with your selected tab color (or no color if that is your chosen prefrence)
----------------
-If you have any features you would like to see, pleasestart a disccusion and I would be glad to do anything Zen CSS related :)
+### 5. **Folder Icon Fill**  
+Customize the folder icon fill with your tab group color—or leave it empty, depending on your preference.  
 
+---
 
-# Credit
+## Suggestions  
 
-thank you to https://github.com/nieffka/bubble-clean-zen for the original CSS theme and inspiration!
+Have an idea for a feature? Start a discussion! I'm happy to explore any Zen CSS-related requests.  
+
+---
+
+## Credit  
+
+Special thanks to [https://github.com/nieffka/bubble-clean-zen](https://github.com/nieffka/bubble-clean-zen) for the original CSS theme and inspiration!
