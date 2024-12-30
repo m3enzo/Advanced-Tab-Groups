@@ -33,7 +33,8 @@ Add these preferences to `about:config` to enable additional features:
 - **`tab.groups.background`**  
 - **`tab.groups.borders`**  
 - **`tab.groups.theme-folders`**  
-- **`tab.groups.fill-folders`**  
+- **`tab.groups.fill-folders`**
+- **`tab.groups.display-tab-range`**
 
 ---
 
