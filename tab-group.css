@@ -1,4 +1,7 @@
-/* ==== Tab groups ==== */
+/* ==== Advanced Tab Groups ==== */
+/* Credit to Bubble-Zen-Theme Author for base CSS layout*/
+Created and modified by @Anoms 12 https://github.com/Anoms12/Advanced-Tab-Groups */
+
 /* Make groups workspace specific */
 
 tab-group:has(tab[hidden]) {
