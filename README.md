@@ -3,7 +3,9 @@ Advanced Tab Group CSS for Zen Browser using userChrome.css
 
 ![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)
 
-**Notice ⚠️**
+** Credit listed at bottom **
+
+** Notice ⚠️**
 
 _Until this is added as a mod in the Zen Mods store you will have to add the following booleans to about:config to be able to use this CSS_
 
@@ -68,3 +70,8 @@ go to about:config and enable `browser.tabs.groups.enabled`
 * Fill the folder icon with your selected tab color (or no color if that is your chosen prefrence)
 ---------------
 If you have any features you would like to see, pleasestart a disccusion and I would be glad to do anything Zen CSS related :)
+
+
+# Credit
+
+thank you to https://github.com/nieffka/bubble-clean-zen for the original CSS theme and inspiration!
