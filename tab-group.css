@@ -1,4 +1,5 @@
 /* ==== Tab groups ==== */
+/* https://github.com/Anoms12/Advanced-Tab-Groups */
 /* Make groups workspace specific */
 
 
@@ -98,14 +99,37 @@ tab-group:has(tab[hidden]) {
 			opacity: 1 !important;
 			font-size: 1 !important;
 			max-height: 5em !important;
-			margin-left: 8px !important;
+			margin-left: 10px !important;
 			transition: font-size 0.5s, margin 0.5s, padding 0.5s, opacity 0.5s !important;
 			transition-delay: 0.25s !important;
+			border-left: 2px solid #000;
 			/* Delay the tab animation until after the height transition */
+			overflow: visible !important;
+			/* Ensures the pseudo-element isn't clipped */
 
 
 			@media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
 				margin-left: 0 !important;
+			}
+
+		}
+
+		@media (-moz-bool-pref: "tab.groups.display-tab-range") {
+			& tab::before {
+				content: '';
+				position: absolute;
+				left: 2px;
+				/* Adjust this value to control the horizontal position */
+				top: 10%
+					/* Center the line vertically */
+					transform: translateY(-50%);
+				width: 2px;
+				/* Adjust the line's length */
+				height: 40.7px;
+				background-color: #D3D3D3BF;
+				/* Line color */
+				border-radius: 360px !important;
+				z-index: 999 !important;
 			}
 		}
 
