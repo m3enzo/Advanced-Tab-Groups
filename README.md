@@ -13,6 +13,8 @@ _If you are not familiar with user chrome.css please refer to [this document](ht
 -----------
 **How do I use this?**
 
+enable browser.tabs.groups.enabled in about:config to use Firefox tab groups (works in all versions of Zen Browser)
+
 * Set up Zen userChrome.css using the link above
 
 * Copy the CSS from the respitory into the user chrome.css file
