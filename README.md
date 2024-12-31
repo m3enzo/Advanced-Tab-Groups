@@ -47,35 +47,44 @@ This CSS improves the functionality and appearance of Zen Browser's experimental
 ## Features  
 
 ### 1. **Custom Background for Tab Groups**  
-Apply a background that matches the tab group color for a cleaner and more cohesive look.  
+Apply a background that matches the tab group color for a cleaner and more cohesive look.
 
-![Background Example](https://github.com/user-attachments/assets/336f1da8-1c13-47ff-a0d1-c933abf3f6f6)  
+![Group Background](https://github.com/user-attachments/assets/072399e3-6d1a-4e18-bcb6-d4ffc14e99b4)
 
 ---
 
 ### 2. **Border Around Tab Groups**  
 Add a subtle border to enhance the visual separation of tab groups (requires background to be enabled).  
 
-![Border Example](https://github.com/user-attachments/assets/197e942e-e3d3-431c-8479-2a0c5aeac4b7)  
+![Group Background With Borders](https://github.com/user-attachments/assets/45e87a2a-da2b-485f-bcb0-7dc1c35da1ac)
 
 ---
 
 ### 3. **Expandable Tab Groups with Arrows**  
 Add an arrow icon to indicate whether a tab group folder is open or closed.  
 
-![Arrow Example](https://github.com/user-attachments/assets/2c5ca1f7-1920-45b0-9a26-ae3be13a6772)  
+![Add Arrows](https://github.com/user-attachments/assets/b813a989-5622-4b79-9aa6-0528b48d9850)
 
 ---
 
 ### 4. **Themed Folder Icons**  
 Color folder icons based on the tab group color to visually differentiate groups.  
 
-![Folder Color Example](https://github.com/user-attachments/assets/f4d3f8c7-f716-47b3-8812-01b2f3a5ca69)  
+![Theme Icons](https://github.com/user-attachments/assets/cb4e4c1e-73d6-4688-bb41-76675ef4afae)
 
 ---
 
 ### 5. **Folder Icon Fill**  
 Customize the folder icon fill with your tab group color—or leave it empty, depending on your preference.  
+
+![Fill Icons](https://github.com/user-attachments/assets/befc0ac8-2861-4ff8-9b16-e5ce00cf647a)
+
+---
+
+### 5. **Display Tab Range**  
+Have a line sowing where the folder starts and stops  
+
+![Tab Range](https://github.com/user-attachments/assets/e0bf30d3-39df-46da-b746-7cfb54f82f09)
 
 ---
 
