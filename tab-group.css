@@ -118,9 +118,9 @@ tab-group:has(tab[hidden]) {
 			& tab::before {
 				content: '';
 				position: absolute;
-				left: 2px;
+				left: -1.5px;
 				/* Adjust this value to control the horizontal position */
-				top: 10%;
+				top: 50%;
 				/* Center the line vertically */
 				transform: translateY(-50%);
 				width: 2px;
