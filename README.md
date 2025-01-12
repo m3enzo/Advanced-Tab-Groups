@@ -97,3 +97,5 @@ Have an idea for a feature? Start a discussion! I'm happy to explore any Zen CSS
 ## Credit  
 
 Special thanks to [https://github.com/nieffka/bubble-clean-zen](https://github.com/nieffka/bubble-clean-zen) for the original CSS theme and inspiration!
+
+<img src="https://github.com/heyitszenithyt/zen-browser-badges/raw/fb14dcd72694b7176d141c774629df76af87514e/light/zen-badge-light.png" alt="Made For Zen Badge">
