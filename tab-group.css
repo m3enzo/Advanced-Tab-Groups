@@ -3,7 +3,7 @@
 /* Make groups workspace specific */
 
 
-tab-group:has(tab[hidden]) {
+tab-group:not(:has(tab:not([hidden]))) {
 	display: none !important;
 }
 
