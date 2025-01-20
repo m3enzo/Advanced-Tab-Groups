@@ -4,7 +4,11 @@
 
 /* Cursed CSS Explanation */
 /* Hides the tab group only if it does not have any visible tabs */
-/* Previous naive implementation :has(tab[hidden]) will make tab groups disappear if used */
+/* Previous naive implementation 
+
+:has(tab[hidden]) 
+
+will make tab groups disappear if used */
 /* across multiple workspaces due to how zen currently implements tab groups */
 tab-group:not(:has(tab:not([hidden]))) {
 	display: none !important;
