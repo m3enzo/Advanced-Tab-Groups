@@ -116,6 +116,7 @@ tab-group:not(:has(tab:not([hidden]))) {
     }
 
     & tab {
+     --tab-group-color-invert: transparent !important;
       opacity: 1 !important;
       font-size: 1 !important;
       max-height: 5em !important;
@@ -301,6 +302,7 @@ tab-group:not(:has(tab:not([hidden]))) {
     }
 
     & tab {
+      --tab-group-color-invert: transparent !important;
       opacity: 1 !important;
       font-size: 1 !important;
       max-height: 5em !important;
