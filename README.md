@@ -1,12 +1,4 @@
 # Advanced Tab Groups  
-_⬇️continue to main repo below⬇️_
-
-## ✨Soon! ✨
-
-With the release of Firefox 135, tab groups will be enabled by default. The dev (Maruo) had said that he will begin working on tab groups/folders (and better split views, with visual indication of what tabs are split!) once they were out of beta, now that this has happened we hope to see native implimentation soon -making this repo obsolete! 
-[**PR for Firefox 135 update!**](https://github.com/zen-browser/desktop/pull/4675)
-![Screenshot 2025-01-28 at 16-49-00 Updated to firefox RC 135 0 by mauro-balades · Pull Request #4675 · zen-browser_desktop](https://github.com/user-attachments/assets/586a15c7-26c7-4da4-ac81-bf216dae8909)
-
 ---
 
 CSS for Zen Browser's experimental Tab Groups using `userChrome.css`.  
