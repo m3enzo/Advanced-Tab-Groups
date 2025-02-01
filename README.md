@@ -36,6 +36,7 @@ If you're unfamiliar with `userChrome.css`, please refer to [this guide](https:/
 - **`tab.groups.theme-folders`**  
 - **`tab.groups.fill-folders`**
 - **`tab.groups.display-tab-range`**
+- -**`tab.groups.hide-save-info`** (_(This is for twilight or Firefox 135)
 
 ---
 
