@@ -28,7 +28,7 @@ If you're unfamiliar with `userChrome.css`, please refer to [this guide](https:/
 
 ## Configuration Options  
 
-Add these preferences to `about:config` to enable additional features:  
+**Add** these preferences to `about:config` to enable additional features **(They have to be added and are not there by default.)**:  
 
 - **`tab.groups.add-arrow`**  
 - **`tab.groups.background`**  
