@@ -5,11 +5,15 @@ CSS for Zen Browser's experimental Tab Groups using `userChrome.css`.
 
 ![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)  
 
-**⚠️If you are on windows and not on twilight (Firefox 135) then you will have to double click the folders due to a non css bug. **
+## ⚠️
+* If you are on windows and not on twilight (Firefox 135) then you will have to double click the folders due to a non css bug.
+
+* IF you are not on twilight PLEASE do not try and add a pin tab to a folder! 🙏
+
+* Any issues you encounter please create a ticket on the GitHub page and I will do what I can to help you quickly.
 ---
 
-## ⚠️ Notice  
-
+## Setup
 
 _To use this CSS, you must configure Zen Browser's `userChrome.css` and enable the listed preferences in `about:config`._  
 
