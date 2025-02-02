@@ -5,6 +5,7 @@ CSS for Zen Browser's experimental Tab Groups using `userChrome.css`.
 
 ![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)  
 
+**⚠️If you are on windows and not on twilight (Firefox 135) then you will have to double click the folders due to a non css bug. **
 ---
 
 ## ⚠️ Notice  
