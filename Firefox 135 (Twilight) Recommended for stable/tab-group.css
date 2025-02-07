@@ -1,3 +1,9 @@
+/*
+======================
+|      Tab Groups    |
+======================
+*/
+
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
 /* Make groups workspace specific */
@@ -42,6 +48,7 @@ tab-group:not(:has(tab:not([hidden]))) {
 
     & .tab-group-label-container {
       --tab-group-color-pale: transparent !important;
+      --tab-group-color: transparent !important;
       margin: 0 !important;
       padding: 0 !important;
       display: flex !important;
@@ -127,6 +134,7 @@ tab-group:not(:has(tab:not([hidden]))) {
 
     & tab {
       --tab-group-color-invert: transparent !important;
+      --tab-group-color: transparent !important;
       opacity: 1 !important;
       margin-left: 18px !important;
       transition: font-size 0.3s, margin 0.3s, padding 0.3s, opacity 0.3s !important;
