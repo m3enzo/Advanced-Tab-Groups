@@ -26,8 +26,9 @@ If you're unfamiliar with `userChrome.css`, please refer to [this guide](https:/
 1. Enable `browser.tabs.groups.enabled` in `about:config` to activate Firefox's experimental Tab Groups feature (works in all versions of Zen Browser).  
 2. Follow [this guide](https://docs.zen-browser.app/guides/live-editing) to set up `userChrome.css`.  
 3. Copy the CSS from this repository into your `userChrome.css` file.  
-4. Add the configuration booleans listed below in `about:config` and adjust them to your liking.  
-5. Enjoy your customized tab groups!  
+4. Add the configuration booleans listed below in `about:config` and adjust them to your liking.
+5. Right click on the tab tou want to group, select add tab to new group then follow the settup. (If this is not an option please check step 1)
+6. Enjoy your customized tab groups!  
 
 ---
 
