@@ -7,7 +7,8 @@ CSS for Zen Browser's experimental Tab Groups using `userChrome.css`.
 
 ## ⚠️Warnings & Notes
 * This is not reccomended by the creator of [Zen Browser](https://github.com/zen-browser/desktop) only use this if you have an understandying of CSS or are ok with the following things:
-  
+
+  * When maruo finishes tab folders you NEED to disable this CSS, or the groups will break, _be coutious_!!!
   * Tab groups may be deleted in other workspcaes besides your default when you close the browser, causing them to be unredeamable
   * Nested tab groups are not possible with pure CSS
   * saving a tab group may break the group and make it unredeamable (please activate the config to avoid saving issues.)
