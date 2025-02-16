@@ -14,6 +14,8 @@ CSS for Zen Browser's experimental Tab Groups using `userChrome.css`.
   * saving a tab group may break the group and make it unredeamable (please activate the config to avoid saving issues.)
 
 * Any issues you encounter please create a ticket on the GitHub page and I will do what I can to help you quickly.
+
+* This does not work with the expand side at on hover mod.
 ---
 
 ## Setup
