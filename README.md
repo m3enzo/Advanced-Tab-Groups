@@ -50,6 +50,7 @@ If you're unfamiliar with `userChrome.css`, please refer to [this guide](https:/
 - **`tab.groups.display-tab-range`**
 - **`tab.groups.hide-save-info`** (Recommend for the moment, until Firefox 136 is launched for Zen Browser, end of the month or early March.)
 - **`tab.groups.better-unload`**
+- **`tab.groups.native-icons`** ⚠️This is an experimental prefrence and there is currently no icon for an open folder so only the closed folder icon will be displayed⚠️
 
 ---
 
