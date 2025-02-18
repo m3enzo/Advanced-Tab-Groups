@@ -6,7 +6,7 @@
 
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V1.3 ====== */
+/* ====== V1.5 ====== */
 /* Make groups workspace specific */
 
 /* Cursed CSS Explanation */
@@ -401,7 +401,7 @@ tab-group:not(:has(tab:not([hidden]))) {
 	}
 }
 
-tab-group {
+tab-group:not([collapsed]) {
   @media (-moz-bool-pref: "tab.groups.better-unload") {
     .tabbrowser-tab[pending="true"] {
      filter: grayscale(1);
