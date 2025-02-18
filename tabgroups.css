@@ -312,7 +312,7 @@ tab-group:not(:has(tab:not([hidden]))) {
     &:not([collapsed]) {
       max-height: 500px !important;
       padding-top: 0;
-      overflow-y: auto !important;
+      overflow-y: hidden !important;
     }
 
     tab-group:has(tab[hidden]) {
