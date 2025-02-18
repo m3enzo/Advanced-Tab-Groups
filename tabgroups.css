@@ -1,6 +1,12 @@
+/*
+ * ======================
+ * |      Tab Groups    |
+ * ======================
+ */
 
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
+/* ====== V1.3 ====== */
 /* Make groups workspace specific */
 
 /* Cursed CSS Explanation */
@@ -140,6 +146,8 @@ tab-group:not(:has(tab:not([hidden]))) {
 		 @media (-moz-bool-pref: "tab.groups.display-tab-range") {
 			transform-origin: left center;
 			}
+			
+
 
 
 			.tab-group-line {
@@ -391,4 +399,13 @@ tab-group:not(:has(tab:not([hidden]))) {
 	#tabGroupEditor_saveAndCloseGroup {
 		display: none !important;
 	}
+}
+
+tab-group {
+  @media (-moz-bool-pref: "tab.groups.better-unload") {
+    .tabbrowser-tab[pending="true"] {
+     filter: grayscale(1);
+    opacity: 0.5 !important;
+     }
+  }
 }
