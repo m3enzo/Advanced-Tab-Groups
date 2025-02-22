@@ -5,7 +5,7 @@ CSS for Zen Browser's experimental Tab Groups using `userChrome.css`.
 ![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)  
 
 ## ⚠️Warnings & Notes
-* This is currently not working on Twilight due to bugs with Zen Browser [#5597](https://github.com/zen-browser/desktop/issues/5597)
+* This repository currently not working on Twilight due to bugs with Zen Browser [#5597](https://github.com/zen-browser/desktop/issues/5597). Please cast your vote [here](https://github.com/Anoms12/Advanced-Tab-Groups/discussions/25) to help me decide where to go from now. I will leave the CSS and other warnings up for now, until I have made my decision.
 
 * This is not reccomended by the creator of [Zen Browser](https://github.com/zen-browser/desktop) only use this if you have an understandying of CSS or are ok with the following things:
 
