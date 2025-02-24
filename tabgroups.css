@@ -28,6 +28,8 @@ tab-group:not(:has(tab:not([hidden]))) {
 @media (-moz-bool-pref: "zen.tabs.vertical") {
   tab-group {
     /* Visual Hierarchy Improvements */
+    display: flex !important;
+    flex-direction: column !important;
     @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
       width: var(--tab-min-width) !important;
     }
@@ -55,8 +57,14 @@ tab-group:not(:has(tab:not([hidden]))) {
     overflow: hidden !important;
 
     & .tab-group-label-container {
+      flex: 0 0 auto !important;
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 1000 !important;
+      transform: none !important;
       --tab-group-color-pale: transparent !important;
       --tab-group-color: transparent !important;
+
       margin: 0 !important;
       padding: 0 !important;
       display: flex !important;
@@ -66,7 +74,6 @@ tab-group:not(:has(tab:not([hidden]))) {
       transition: transform 0.2s ease;
       transition: background-color 0.2s ease;
       width: 100% !important;
-      transform: translateY(25px);
       @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
         width: var(--tab-min-width) !important;
       }
@@ -150,10 +157,10 @@ tab-group:not(:has(tab:not([hidden]))) {
     }
 
     & tab {
+      flex: 1 1 auto !important;
       opacity: 1 !important;
       margin-left: 18px !important;
-      transition: font-size 0.15s, margin 0.3s, padding 0.3s, opacity 0.1s,
-        scale, 0.2s !important;
+      transition: font-size 0.15s, margin 0.3s, padding 0.3s, opacity 0.1s !important;
       transition-delay: 0.1s !important;
       overflow: visible !important;
       @media (-moz-bool-pref: "tab.groups.display-tab-range") {
@@ -195,7 +202,7 @@ tab-group:not(:has(tab:not([hidden]))) {
 
     &[collapsed] {
       max-height: 36px !important;
-      transition: max-height 0.5s ease;
+      transition: max-height 0.3s ease;
 
       & .tab-group-label-container {
         &::after {
@@ -209,7 +216,6 @@ tab-group:not(:has(tab:not([hidden]))) {
       & tab {
         z-index: -1 !important;
         opacity: 0 !important;
-        transform: translateY(-25px);
       }
 
       & .tab-group-label-container > label::before {
@@ -310,9 +316,10 @@ tab-group:not(:has(tab:not([hidden]))) {
 
     /* Expand when NOT collapsed */
     &:not([collapsed]) {
-      max-height: 500px !important;
+      max-height: 205px;
       padding-top: 0;
-      overflow-y: hidden !important;
+      overflow-y: auto !important;
+      transition: max-height 0.3s ease;
     }
 
     tab-group:has(tab[hidden]) {
