@@ -4,19 +4,19 @@ CSS for Zen Browser's experimental Tab Groups using `userChrome.css`.
 
 ![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)  
 
-## ⚠️Warnings & Notes
-* This repository currently not working on Twilight due to bugs with Zen Browser [#5597](https://github.com/zen-browser/desktop/issues/5597). Please cast your vote [here](https://github.com/Anoms12/Advanced-Tab-Groups/discussions/25) to help me decide where to go from now. I will leave the CSS and other warnings up for now, until I have made my decision.
-
-* This is not reccomended by the creator of [Zen Browser](https://github.com/zen-browser/desktop) only use this if you have an understandying of CSS or are ok with the following things:
-
-  * When maruo finishes tab folders you NEED to disable this CSS, or the groups will break, _be coutious_!!!
-  * Tab groups may be deleted in other workspcaes besides your default when you close the browser, causing them to be unredeamable
-  * Nested tab groups are not possible with pure CSS
-  * saving a tab group may break the group and make it unredeamable (please activate the config to avoid saving issues.)
-
-  * This does not work with the expand sidebar on hover mod.
-
-* Any issues you encounter please create a ticket on the GitHub page and I will do what I can to help you quickly.
+> [!WARNING]
+> * This repository currently not working due to bugs with Zen Browser [#5597](https://github.com/zen-browser/desktop/issues/5597). Please cast your vote [here](https://github.com/Anoms12/Advanced-Tab-Groups/discussions/25) > to help me decide where to go from now. I will leave the CSS and other warnings up for now, until I have made my decision.
+> 
+> * This is not reccomended by the creator of [Zen Browser](https://github.com/zen-browser/desktop) only use this if you have an understandying of CSS or are ok with the following things:
+>
+>  * When maruo finishes tab folders you NEED to disable this CSS, or the groups will break, _be coutious_!!!
+>  * Tab groups may be deleted in other workspcaes besides your default when you close the browser, causing them to be unredeamable
+>  * Nested tab groups are not possible with pure CSS
+>  * saving a tab group may break the group and make it unredeamable (please activate the config to avoid saving issues.)
+>
+>  * This does not work with the expand sidebar on hover mod.
+>
+> * Any issues you encounter please create a ticket on the GitHub page and I will do what I can to help you quickly.
 
 ---
 
