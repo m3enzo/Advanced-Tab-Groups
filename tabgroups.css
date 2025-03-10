@@ -137,9 +137,10 @@ tab-group:not([split-view-group]) {
       background-repeat: no-repeat !important;
     }
   }
+  
 
-  & tab {
-    flex: 1 1 auto !important;
+  & tab:not([zen-glance-tab]) {
+    width: calc(var(--zen-sidebar-width)-18px) !important;
     opacity: 1 !important;
     margin-left: 18px !important;
     transition: opacity 0.25s ease-in, font-size 0.25s ease-out,
@@ -257,14 +258,14 @@ tab-group:not([split-view-group]) {
           mask-repeat: no-repeat;
           background-size: contain !important;
           background-repeat: no-repeat !important;
-          margin-right: 7px !important;
+          margin-right: 0 !important;
           transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
       }
 
       &[collapsed] {
         & .tab-group-label-container > label::after {
-          margin-right: 7px !important;
+          margin-right: 0 !important;
           position: relative !important;
           top: 40% !important;
           transform: translateY(-50%) !important;
@@ -290,36 +291,61 @@ tab-group:not([split-view-group]) {
     display: none !important;
   }
 }
-
-tab-group[split-view-group] {
-  /*
-    &:has(tab[visuallyselected]) {
-    margin-top: auto !important;
-    order: 99999 !important; */
-  @media (-moz-bool-pref: "tab.groups.split.concepts") {
+@media (-moz-bool-pref: "tab.groups.split.concepts") {
+  tab-group[split-view-group] {
     display: flex !important;
     flex-direction: column !important;
+    
+    &:has(tab[visuallyselected]) {
+      order: 99999 !important;
+      bottom: 0 !important;
+      position: sticky !important;
+      display: flex !important;
+    }
+    
     & .tab-group-label-container {
       display: flex !important;
+      
       &:after {
         background: none !important;
       }
+      
       label {
-        min-height: 0 !important;
-        height: 12px !important;
-        width: 100% !important;
-        background: transparent !important;
-        border: none !important;
-        font-weight: 400 !important;
-        text-align: center !important;
-        color: var(--sidebar-text-color) !important;
-        margin: 0 !important;
         display: flex !important;
         justify-content: flex-start !important;
         align-content: flex-start !important;
-        padding-left: 34.5px !important;
+        text-align: center !important;
+        font-weight: 400 !important;
         font-size: 12px !important;
+        color: white !important;
+        background: transparent !important;
+        border: none !important;
+        margin: 0 !important;
         margin-top: 6px !important;
+        padding-left: 27.5px !important;
+        padding-bottom: 7px !important;
+        min-height: 0 !important;
+        height: 12px !important;
+        width: 100% !important;
+        
+        &:before {
+          content: "Split Group" !important;
+          position: absolute !important;
+          top: 43% !important;
+          left: 6px !important;
+          width: 18px !important;
+          height: 18px !important;
+          background-color: white !important;
+          mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEwIDIuNUMxMCAyLjIyMzg2IDkuNzc2MTQgMiA5LjUgMkM5LjIyMzg2IDIgOSAyLjIyMzg2IDkgMi41VjE3LjVDOSAxNy43NzYxIDkuMjIzODYgMTggOS41IDE4QzkuNzc2MTQgMTggMTAgMTcuNzc2MSAxMCAxNy41VjIuNVpNNCA0QzIuODk1NDMgNCAyIDQuODk1NDMgMiA2VjE0QzIgMTUuMTA0NiAyLjg5NTQzIDE2IDQgMTZIOFYxNUg0QzMuNDQ3NzIgMTUgMyAxNC41NTIzIDMgMTRWNkMzIDUuNDQ3NzIgMy40NDc3MiA1IDQgNUg4VjRINFpNMTEgNFY1SDE1QzE1LjU1MjMgNSAxNiA1LjQ0NzcyIDE2IDZWMTRDMTYgMTQuNTUyMyAxNS41NTIzIDE1IDE1IDE1SDExVjE2SDE1QzE2LjEwNDYgMTYgMTcgMTUuMTA0NiAxNyAxNFY2QzE3IDQuODk1NDMgMTYuMTA0NiA0IDE1IDRIMTFaIiBmaWxsPSJjdXJyZW50Q29sb3IiIHN0cm9rZT0ibm9uZSIgZmlsbC1vcGFjaXR5PSJjb250ZXh0LWZpbGwtb3BhY2l0eSIvPgo8L3N2Zz4K");
+          mask-size: contain;
+          mask-repeat: no-repeat;
+          background-size: contain !important;
+          background-repeat: no-repeat !important;
+          
+          @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
+            left: 8px !important;
+          }
+        }
       }
     }
   }
