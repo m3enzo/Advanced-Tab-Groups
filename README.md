@@ -14,12 +14,13 @@ Tab groups are on be default in [Firefox 136](https://github.com/zen-browser/des
 >  * When maruo finishes tab folders you NEED to disable this CSS, or the groups will break, _be coutious_!!!
 >  * Tab groups may be deleted in other workspcaes besides your default when you close the browser, causing them to be unredeamable
 >  * Nested tab groups are not possible with pure CSS
->  * saving a tab group may break the group and make it unredeamable (please activate the config to avoid saving issues.)
->
+>  * saving a tab group may break the group and make it unredeamable (please activate the config to avoid saving issues.) -This no longer is an issue on twilight as you can save tab groups, scroll down to learn more.
 >  * This does not work with the expand sidebar on hover mod.
->
-> * Any issues you encounter please create a ticket on the GitHub page and I will do what I can to help you quickly.
+>  * Any issues you encounter please create a ticket on the GitHub page and I will do what I can to help you quickly.
 
+
+> [!NOTE]
+> On Twilight, you can use the view all tabs toolbar function to open saved tab groups, making the config unneeded. This is also the best way to make sure your tab stay grouped. Just save them before you close the browser and you will be able to keep them.
 ---
 
 ## Setup
