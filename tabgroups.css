@@ -1,6 +1,6 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V1.5.2 ====== */
+/* ====== V1.5.3 ====== */
 /* Make groups workspace specific */
 
 /* Cursed CSS Explanation */
@@ -11,6 +11,10 @@
 *
 * will make tab groups disappear if used */
 /* across multiple workspaces due to how zen currently implements tab groups */
+
+#alltabs-button {
+  display: block !important;
+}
 
 tab-group:not(:has(tab:not([hidden]))) {
   display: none !important;
