@@ -1,28 +1,14 @@
+/*
+* ======================
+* |      Tab Groups    |
+* ======================
+*/
+
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V1.5.3 ====== */
+/* ====== V1.5.2 ====== */
 /* Make groups workspace specific */
-
-/* Cursed CSS Explanation */
-/* Hides the tab group only if it does not have any visible tabs */
-/* Previous naive implementation
-*
-* :has(tab[hidden])
-*
-* will make tab groups disappear if used */
-/* across multiple workspaces due to how zen currently implements tab groups */
-
-#alltabs-button {
-  display: block !important;
-}
-
-tab-group:not(:has(tab:not([hidden]))) {
-  display: none !important;
-  @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
-    width: var(--tab-min-width) !important;
-  }
-}
-
+/* Lets get a config here `browser.tabs.groups.enabled` */
 tab-group:not([split-view-group]) {
   /* Visual Hierarchy Improvements */
   display: flex !important;
@@ -141,14 +127,12 @@ tab-group:not([split-view-group]) {
       background-repeat: no-repeat !important;
     }
   }
-  
 
   & tab:not([zen-glance-tab]) {
     width: calc(var(--zen-sidebar-width)-18px) !important;
     opacity: 1 !important;
     margin-left: 18px !important;
-    transition: opacity 0.25s ease-in, font-size 0.25s ease-out,
-      margin 0.25s ease-out, padding 0.25s ease-out !important;
+    transition: transform 0.3s ease-in-out !important;
     overflow: visible !important;
     @media (-moz-bool-pref: "tab.groups.display-tab-range") {
       transform-origin: left center;
@@ -197,11 +181,10 @@ tab-group:not([split-view-group]) {
     transition: max-height 0.25s ease-out;
 
     & tab {
+      transform: translateY(-50px) !important;
       z-index: -1 !important;
       display: flex !important;
-      opacity: 0.1 !important;
-      padding: 0 !important;
-      margin: 0 !important;
+      opacity: 0 !important;
     }
 
     & .tab-group-label-container > label::before {
@@ -299,21 +282,21 @@ tab-group:not([split-view-group]) {
   tab-group[split-view-group] {
     display: flex !important;
     flex-direction: column !important;
-    
+
     &:has(tab[visuallyselected]) {
       order: 99999 !important;
       bottom: 0 !important;
       position: sticky !important;
       display: flex !important;
     }
-    
+
     & .tab-group-label-container {
       display: flex !important;
-      
+
       &:after {
         background: none !important;
       }
-      
+
       label {
         display: flex !important;
         justify-content: flex-start !important;
@@ -331,7 +314,7 @@ tab-group:not([split-view-group]) {
         min-height: 0 !important;
         height: 12px !important;
         width: 100% !important;
-        
+
         &:before {
           content: "Split Group" !important;
           position: absolute !important;
@@ -345,7 +328,7 @@ tab-group:not([split-view-group]) {
           mask-repeat: no-repeat;
           background-size: contain !important;
           background-repeat: no-repeat !important;
-          
+
           @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
             left: 8px !important;
           }
@@ -438,21 +421,6 @@ tab-group:not([split-view-group]) {
   }
 }
 
-@media (-moz-bool-pref: "tab.groups.hide-save-info") {
-  #allTabsMenu-tabsSeparator {
-    display: none !important;
-  }
-
-  #allTabsMenu-groupsView {
-    display: none !important;
-  }
-
-  /* Hide currently disfunctional "Save and close group" text */
-  #tabGroupEditor_saveAndCloseGroup {
-    display: none !important;
-  }
-}
-
 tab-group:not([collapsed]) {
   @media (-moz-bool-pref: "tab.groups.better-unload") {
     .tabbrowser-tab[pending="true"] {
@@ -557,5 +525,20 @@ tab-group:not([collapsed]) {
       filter: grayscale(1);
       opacity: 0.5 !important;
     }
+  }
+}
+
+/* fix icon padding */
+.tabbrowser-tab[zen-glance-tab] {
+  .tab-icon-stack {
+    padding: 0 !important;
+  }
+
+  .tab-icon-stack {
+    width: min-content !important;
+  }
+
+  .tab-label-container {
+    padding: 0 !important;
   }
 }
