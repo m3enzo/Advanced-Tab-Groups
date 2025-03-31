@@ -1,6 +1,6 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V1.6 ====== */
+/* ====== V1.6.1 ====== */
 /* Make groups workspace specific */
 /* Lets get a config here `browser.tabs.groups.enabled` */
 tab-group:not([split-view-group]) {
@@ -178,6 +178,9 @@ tab-group:not([split-view-group]) {
       z-index: -1 !important;
       display: flex !important;
       opacity: 0 !important;
+      .tab-text {
+        overflow: visible !important;
+      }
     }
 
     & .tab-group-label-container > label::before {
@@ -251,13 +254,13 @@ tab-group:not([split-view-group]) {
     display: none !important;
   }
 }
-
-#navigator-toolbox:not([movingtab]) {
+  #navigator-toolbox:not([movingtab]) {
+  tab-group:not([split-view-group]) {
   tab[style=""]  {
    transition: transform 0.3s ease-out, opacity 0.25s ease-out !important;
   }
 }
-
+}
 
 
 .all-tabs-group-button {
