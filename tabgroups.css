@@ -1,6 +1,6 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V1.5.2 ====== */
+/* ====== V1.6 ====== */
 /* Make groups workspace specific */
 /* Lets get a config here `browser.tabs.groups.enabled` */
 tab-group:not([split-view-group]) {
@@ -72,7 +72,7 @@ tab-group:not([split-view-group]) {
       align-content: flex-start !important;
       padding-left: 34.5px !important;
       font-size: 12px !important;
-      margin-top: 5px !important;
+      margin-top: 6px !important;
 
       @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
         color: transparent !important;
@@ -101,6 +101,7 @@ tab-group:not([split-view-group]) {
         background-color: var(--sidebar-text-color) !important;
       }
 
+
         @media not (-moz-bool-pref: "tab.groups.fill-folders") {
           mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgOS41MDJWOC43NWEyLjI1IDIuMjUgMCAwIDAtMi4yNS0yLjI1aC01LjcyNWwtMi4zOC0xLjk4QTIuMjUgMi4yNSAwIDAgMCA4LjIwNCA0SDQuMjVBMi4yNSAyLjI1IDAgMCAwIDIgNi4yNWwtLjAwNCAxMS41QTIuMjUgMi4yNSAwIDAgMCA0LjI0NiAyMEgxOC40N2ExLjc1IDEuNzUgMCAwIDAgMS42OTgtMS4zMjVsMS43NS02Ljk5OGExLjc1IDEuNzUgMCAwIDAtMS42OTgtMi4xNzVIMjBaTTQuMjUgNS41aDMuOTU2YS43NS43NSAwIDAgMSAuNDguMTczbDIuNTg4IDIuMTU0YS43NS43NSAwIDAgMCAuNDguMTczaDUuOTk2YS43NS43NSAwIDAgMSAuNzUuNzV2Ljc1Mkg2LjQyNGEyLjI1IDIuMjUgMCAwIDAtMi4xODMgMS43MDRsLS43NDQgMi45NzhMMy41IDYuMjVhLjc1Ljc1IDAgMCAxIC43NS0uNzVabTEuNDQ3IDYuMDdhLjc1Ljc1IDAgMCAxIC43MjctLjU2OEgyMC4yMmEuMjUuMjUgMCAwIDEgLjI0Mi4zMWwtMS43NSA2Ljk5OWEuMjUuMjUgMCAwIDEtLjI0Mi4xODlINC4yODVhLjI1LjI1IDAgMCAxLS4yNDMtLjMxbDEuNjU1LTYuNjJaIiBmaWxsPSIjMDAwMDAwIi8+PC9zdmc+");
         }
@@ -118,15 +119,16 @@ tab-group:not([split-view-group]) {
   }
 
   & tab:not([zen-glance-tab]) {
-    width: calc(var(--zen-sidebar-width)-18px) !important;
-    opacity: 1 !important;
     margin-left: 18px !important;
-    transition: opacity 0.25s ease-in, font-size 0.25s ease-out,
-      margin 0.25s ease-out, padding 0.25s ease-out !important;
     overflow: visible !important;
+    &:active {
+      transition: scale 0.03s !important;
+      scale: 0.98;
+    }
     @media (-moz-bool-pref: "tab.groups.display-tab-range") {
       transform-origin: left center;
     }
+      
 
     .tab-group-line {
       --tab-group-color-invert: transparent !important;
@@ -141,6 +143,7 @@ tab-group:not([split-view-group]) {
       margin-left: 0 !important;
     }
   }
+  
 
   @media (-moz-bool-pref: "tab.groups.display-tab-range") {
     tab::before {
@@ -168,14 +171,13 @@ tab-group:not([split-view-group]) {
 
   &[collapsed] {
     max-height: 36px !important;
-    transition: max-height 0.25s ease-out;
+    transition: max-height 0.3s ease-out;
 
     & tab {
+      transform: translateY(-30px) !important;
       z-index: -1 !important;
       display: flex !important;
-      opacity: 0.1 !important;
-      padding: 0 !important;
-      margin: 0 !important;
+      opacity: 0 !important;
     }
 
     & .tab-group-label-container > label::before {
@@ -209,10 +211,6 @@ tab-group:not([split-view-group]) {
     @media (-moz-bool-pref: "tab.groups.add-arrow") {
       /* arrow icon */
       & .tab-group-label-container {
-        &:after {
-          display: none !important;
-        }
-
         & > label {
           display: flex !important;
           justify-content: space-between !important;
@@ -228,26 +226,15 @@ tab-group:not([split-view-group]) {
           background-color: var(--sidebar-text-color);
           mask-image: url("data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Ik00MTMuMSAzMjcuM2wtMS44LTIuMS0xMzYtMTU2LjVjLTQuNi01LjMtMTEuNS04LjYtMTkuMi04LjYtNy43IDAtMTQuNiAzLjQtMTkuMiA4LjZMMTAxIDMyNC45bC0yLjMgMi42Qzk3IDMzMCA5NiAzMzMgOTYgMzM2LjJjMCA4LjcgNy40IDE1LjggMTYuNiAxNS44aDI4Ni44YzkuMiAwIDE2LjYtNy4xIDE2LjYtMTUuOCAwLTMuMy0xLjEtNi40LTIuOS04Ljl6Ii8+PG1ldGFkYXRhPjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6cmRmcz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wMS9yZGYtc2NoZW1hIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIj48cmRmOkRlc2NyaXB0aW9uIGFib3V0PSJodHRwczovL2ljb25zY291dC5jb20vbGVnYWwjbGljZW5zZXMiIGRjOnRpdGxlPSJhcnJvdyx1cCxiIiBkYzpkZXNjcmlwdGlvbj0iYXJyb3csdXAsYiIgZGM6cHVibGlzaGVyPSJJY29uc2NvdXQiIGRjOmRhdGU9IjIwMTctMDktMjQiIGRjOmZvcm1hdD0iaW1hZ2Uvc3ZnK3htbCIgZGM6bGFuZ3VhZ2U9ImVuIj48ZGM6Y3JlYXRvcj48cmRmOkJhZz48cmRmOmxpPkJlbmphbWluIEogU3BlcnJ5PC9yZGY6bGk+PC9yZGY6QmFnPjwvZGM6Y3JlYXRvcj48L3JkZjpEZXNjcmlwdGlvbj48L3JkZjpSREY+PC9tZXRhZGF0YT48L3N2Zz4=");
           mask-size: contain;
-          mask-repeat: no-repeat;
-          background-size: contain !important;
-          background-repeat: no-repeat !important;
-          margin-right: 0 !important;
           transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
       }
 
       &[collapsed] {
         & .tab-group-label-container > label::after {
-          margin-right: 0 !important;
-          position: relative !important;
-          top: 40% !important;
           transform: translateY(-50%) !important;
           width: 13px !important;
           height: 13px !important;
-          background-color: var(--sidebar-text-color);
-          mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M413.1 327.3l-1.8-2.1-136-156.5c-4.6-5.3-11.5-8.6-19.2-8.6-7.7 0-14.6 3.4-19.2 8.6L101 324.9l-2.3 2.6C97 330 96 333 96 336.2c0 8.7 7.4 15.8 16.6 15.8h286.8c9.2 0 16.6-7.1 16.6-15.8 0-3.3-1.1-6.4-2.9-8.9z"/></svg>');
-          mask-repeat: no-repeat;
-          background-repeat: no-repeat !important;
         }
       }
     }
@@ -265,14 +252,13 @@ tab-group:not([split-view-group]) {
   }
 }
 
-#tabbrowser-tabs {
-  & .tabbrowser-tab {
-    &:active {
-      transition: scale 0.03s !important;
-      scale: 0.98;
-    }
+#navigator-toolbox:not([movingtab]) {
+  tab[style=""]  {
+   transition: transform 0.3s ease-out, opacity 0.25s ease-out !important;
   }
 }
+
+
 
 .all-tabs-group-button {
   .toolbarbutton-icon {
@@ -291,9 +277,6 @@ tab-group:not([split-view-group]) {
     width: 16px !important;
     height: 16px !important;
     mask-size: contain;
-    mask-repeat: no-repeat;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
   }
 }
 
@@ -342,18 +325,6 @@ tab-group:not([split-view-group]) {
     width: 16px !important;
     height: 16px !important;
     mask-size: contain;
-    mask-repeat: no-repeat;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-  }
-}
-
-tab-group:not([collapsed]) {
-  @media (-moz-bool-pref: "tab.groups.better-unload") {
-    .tabbrowser-tab[pending="true"] {
-      filter: grayscale(1);
-      opacity: 0.5 !important;
-    }
   }
 }
 
@@ -374,9 +345,6 @@ tab-group:not([collapsed]) {
     width: 16px !important;
     height: 16px !important;
     mask-size: contain;
-    mask-repeat: no-repeat;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
   }
 }
 
@@ -395,9 +363,6 @@ tab-group:not([collapsed]) {
     }
 
     mask-size: contain;
-    mask-repeat: no-repeat;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
   }
 }
 
@@ -431,29 +396,7 @@ tab-group:not([collapsed]) {
   }
 }
 
-@media (-moz-bool-pref: "tab.groups.hide-save-info") {
-  #allTabsMenu-tabsSeparator {
-    display: none !important;
-  }
 
-  #allTabsMenu-groupsView {
-    display: none !important;
-  }
-
-  /* Hide currently disfunctional "Save and close group" text */
-  #tabGroupEditor_saveAndCloseGroup {
-    display: none !important;
-  }
-}
-
-tab-group:not([collapsed]) {
-  @media (-moz-bool-pref: "tab.groups.better-unload") {
-    .tabbrowser-tab[pending="true"] {
-      filter: grayscale(1);
-      opacity: 0.5 !important;
-    }
-  }
-}
 
 /* fix icon padding */
 .tabbrowser-tab[zen-glance-tab] {
