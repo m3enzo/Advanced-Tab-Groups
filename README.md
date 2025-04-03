@@ -7,7 +7,7 @@ CSS for Zen Browser's experimental Tab Groups using `userChrome.css`.
 
 
 > [!NOTE]
-> I do not have a reddit or discord. But I love TTFC
+> I do not have a reddit or discord. But I love TFFC
 ---
 
 ![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)  
