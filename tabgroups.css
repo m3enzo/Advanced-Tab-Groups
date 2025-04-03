@@ -1,6 +1,6 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V1.6.1 ====== */
+/* ====== V1.6 ====== */
 /* Make groups workspace specific */
 /* Lets get a config here `browser.tabs.groups.enabled` */
 tab-group:not([split-view-group]) {
@@ -9,6 +9,7 @@ tab-group:not([split-view-group]) {
   flex-direction: column !important;
   @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
     width: var(--tab-min-width) !important;
+    margin-left: 5px !important;
   }
 
   @media (-moz-bool-pref: "tab.groups.background") {
@@ -40,7 +41,7 @@ tab-group:not([split-view-group]) {
     height: 36px !important;
     border-radius: calc(var(--border-radius-medium) + 2px) !important;
     transition: transform 0.2s ease;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, border-radius 0.2s ease-in-out;
     @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
       width: var(--tab-min-width) !important;
     }
