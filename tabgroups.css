@@ -1,10 +1,8 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V1.6 ====== */
+/* ====== V1.6.1 ====== */
 /* Make groups workspace specific */
-/* Lets get a config here `browser.tabs.groups.enabled` */
 tab-group:not([split-view-group]) {
-  /* Visual Hierarchy Improvements */
   display: flex !important;
   flex-direction: column !important;
   @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
@@ -305,7 +303,6 @@ tab-group:not([split-view-group]) {
   }
 }
 
-/* Fix saved group Icons, probably will not work until the nexr ff version... */
 .all-tabs-group-saved-group {
   clip: none !important;
 
