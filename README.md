@@ -13,7 +13,7 @@ CSS for Zen Browser's experimental Tab Groups using `userChrome.css`.
 ![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)  
 
 
-Tab groups are on be default in [Firefox 136](https://github.com/zen-browser/desktop/commit/f7995f6da7e05838945fe4aa4d94eb555251293a) which is the current version Zen is using so Mauro should begin working on them soon!
+Good news on official support! https://github.com/zen-browser/desktop/tree/tab-folders
 
 > [!WARNING]
 > 
