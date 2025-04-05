@@ -71,7 +71,7 @@ tab-group:not([split-view-group]) {
       align-content: flex-start !important;
       padding-left: 34.5px !important;
       font-size: 12px !important;
-      margin-top: 6px !important;
+      margin-top: 5px !important;
 
       @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
         color: transparent !important;
