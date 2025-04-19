@@ -7,7 +7,7 @@ tab-group:not([split-view-group]) {
   flex-direction: column !important;
   @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
     width: var(--tab-min-width) !important;
-    margin: calc(var(--zen-element-separation) / 2) auto !important;
+    margin: var(--tab-block-margin) auto !important;
   }
 
   @media (-moz-bool-pref: "tab.groups.background") {
@@ -24,7 +24,7 @@ tab-group:not([split-view-group]) {
   }
 
   border-radius: calc(var(--border-radius-medium) + 2px) !important;
-  margin: calc(var(--zen-element-separation) / 2) 2px;
+  margin: 2px 2px 2px 2px;
   transition: max-height 0.75s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden !important;
 
@@ -71,6 +71,9 @@ tab-group:not([split-view-group]) {
       align-content: flex-start !important;
       padding-left: 34.5px !important;
       font-size: 12px !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       margin-top: 5px !important;
 
       @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
@@ -118,8 +121,9 @@ tab-group:not([split-view-group]) {
   }
 
   & tab:not([zen-glance-tab]) {
-    margin-left: 18px !important;
+    margin-left: 10px !important;
     overflow: visible !important;
+    width: calc(100% - 10px) !important;
     &:active {
       transition: scale 0.03s !important;
       scale: 0.98;
@@ -397,8 +401,6 @@ tab-group:not([split-view-group]) {
   }
 }
 
-
-
 /* fix icon padding */
 .tabbrowser-tab[zen-glance-tab] {
   .tab-icon-stack {
@@ -411,5 +413,28 @@ tab-group:not([split-view-group]) {
 
   .tab-label-container {
     padding: 0 !important;
+  }
+}
+
+.toolbarbutton-icon[label="History"] {
+  list-style-image: var(--flow-history-icon) !important;
+}
+
+#PanelUI-menu-button {
+  list-style-image: var(--flow-zen-icon) !important;
+}
+
+tab-group[collapsed] {
+  tab-group {
+   transition: transform 0.3s ease-out, opacity 0.25s ease-out !important;
+      transform: translateY(-30px) !important;
+      z-index: -1 !important;
+      opacity: 0 !important; 
+    &:not([collapsed]) {
+       & .tab-group-label-container > label::after {
+         transition: none !important;
+         transform: rotate(180deg) !important;
+    }
+  }
   }
 }
