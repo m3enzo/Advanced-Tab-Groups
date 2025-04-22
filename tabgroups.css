@@ -1,10 +1,11 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V1.7.0 ====== */
+/* ====== V1.7.1 ====== */
 /* Make groups workspace specific */
 tab-group:not([split-view-group]) {
   display: flex !important;
   flex-direction: column !important;
+  overflow: visable !important;
   @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
     width: var(--tab-min-width) !important;
     margin: var(--tab-block-margin) auto !important;
@@ -26,7 +27,6 @@ tab-group:not([split-view-group]) {
   border-radius: calc(var(--border-radius-medium) + 2px) !important;
   margin: 2px 2px 2px 2px;
   transition: max-height 0.75s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden !important;
 
   & .tab-group-label-container {
     flex: 0 0 auto !important;
@@ -59,6 +59,9 @@ tab-group:not([split-view-group]) {
     }
 
     & > label {
+      margin: 0 !important;
+      padding-bottom: 0 !important;
+      padding-top: 0 !important;
       width: 100% !important;
       background: transparent !important;
       border: none !important;
@@ -72,9 +75,8 @@ tab-group:not([split-view-group]) {
       padding-left: 34.5px !important;
       font-size: 12px !important;
       white-space: nowrap;
-      overflow: hidden;
       text-overflow: ellipsis;
-      margin-top: 5px !important;
+      margin-top: 8px !important;
 
       @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
         color: transparent !important;
@@ -218,7 +220,6 @@ tab-group:not([split-view-group]) {
       /* arrow icon */
       & .tab-group-label-container {
         & > label {
-          display: flex !important;
           justify-content: space-between !important;
         }
 
@@ -249,7 +250,6 @@ tab-group:not([split-view-group]) {
   /* Expand when NOT collapsed */
   &:not([collapsed]) {
     max-height: 500px !important;
-    overflow: scroll !important;
     scrollbar-width: none !important;
   }
 
@@ -401,28 +401,6 @@ tab-group:not([split-view-group]) {
   }
 }
 
-/* fix icon padding */
-.tabbrowser-tab[zen-glance-tab] {
-  .tab-icon-stack {
-    padding: 0 !important;
-  }
-
-  .tab-icon-stack {
-    width: min-content !important;
-  }
-
-  .tab-label-container {
-    padding: 0 !important;
-  }
-}
-
-.toolbarbutton-icon[label="History"] {
-  list-style-image: var(--flow-history-icon) !important;
-}
-
-#PanelUI-menu-button {
-  list-style-image: var(--flow-zen-icon) !important;
-}
 
 tab-group[collapsed] {
   tab-group {
