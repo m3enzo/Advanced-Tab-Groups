@@ -1,24 +1,6 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V1.8 ====== */
-/* Make groups workspace specific */
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-    margin-left: 10px;
-    visibility: visible;
-  }
-  99% {
-    opacity: 0;
-    margin-left: 0;
-    visibility: visible;
-  }
-  100% {
-    opacity: 0;
-    margin-left: 0;
-    visibility: hidden;
-  }
-}
+/* ====== V1.9 ====== */
 
 /* General/Open UI */
 tab-group:not([split-view-group]) {
@@ -45,7 +27,9 @@ tab-group:not([split-view-group]) {
 
   border-radius: calc(var(--border-radius-medium) + 2px) !important;
   margin: 2px 2px 2px 2px;
-  transition: max-height 0.45s;
+  @media not (-moz-bool-pref: "tab.groups.disable-animations") {
+    transition: max-height 0.45s;
+  }
 
   & .tab-group-label-container {
     padding: 0 !important;
@@ -55,7 +39,9 @@ tab-group:not([split-view-group]) {
     margin: 0 !important;
     height: 36px !important;
     border-radius: calc(var(--border-radius-medium) + 2px) !important;
-    transition: background-color 0.2s ease, border-radius 0.2s ease-in-out;
+    @media not (-moz-bool-pref: "tab.groups.disable-animations") {
+      transition: background-color 0.2s ease, border-radius 0.2s ease-in-out;
+    }
     @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
       width: var(--tab-min-width) !important;
     }
@@ -80,7 +66,7 @@ tab-group:not([split-view-group]) {
       font-size: 12px !important;
       outline: none !important;
       outline-offset: 0 !important;
-
+      
       @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
         color: transparent !important;
         width: 30px !important;
@@ -127,7 +113,9 @@ tab-group:not([split-view-group]) {
     margin-left: 10px !important;
     overflow: visible !important;
     width: calc(100% - 10px) !important;
-    transition: opacity 0.25s ease-out, margin-left 0.3s ease !important;
+    @media not (-moz-bool-pref: "tab.groups.disable-animations") {
+      transition: opacity 0.25s ease-out, margin-left 0.3s ease !important;
+    }
     @media (-moz-bool-pref: "tab.groups.display-tab-range") {
       transform-origin: left center;
     }
@@ -171,6 +159,7 @@ tab-group:not([split-view-group]) {
         }
 
         & > label::after {
+          position: absolute !important;
           content: "" !important;
           position: absolute !important;
           right: 7% !important;
@@ -181,7 +170,9 @@ tab-group:not([split-view-group]) {
           background-color: var(--sidebar-text-color);
           mask-image: url("data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Ik00MTMuMSAzMjcuM2wtMS44LTIuMS0xMzYtMTU2LjVjLTQuNi01LjMtMTEuNS04LjYtMTkuMi04LjYtNy43IDAtMTQuNiAzLjQtMTkuMiA4LjZMMTAxIDMyNC45bC0yLjMgMi42Qzk3IDMzMCA5NiAzMzMgOTYgMzM2LjJjMCA4LjcgNy40IDE1LjggMTYuNiAxNS44aDI4Ni44YzkuMiAwIDE2LjYtNy4xIDE2LjYtMTUuOCAwLTMuMy0xLjEtNi40LTIuOS04Ljl6Ii8+PG1ldGFkYXRhPjxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6cmRmcz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wMS9yZGYtc2NoZW1hIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIj48cmRmOkRlc2NyaXB0aW9uIGFib3V0PSJodHRwczovL2ljb25zY291dC5jb20vbGVnYWwjbGljZW5zZXMiIGRjOnRpdGxlPSJhcnJvdyx1cCxiIiBkYzpkZXNjcmlwdGlvbj0iYXJyb3csdXAsYiIgZGM6cHVibGlzaGVyPSJJY29uc2NvdXQiIGRjOmRhdGU9IjIwMTctMDktMjQiIGRjOmZvcm1hdD0iaW1hZ2Uvc3ZnK3htbCIgZGM6bGFuZ3VhZ2U9ImVuIj48ZGM6Y3JlYXRvcj48cmRmOkJhZz48cmRmOmxpPkJlbmphbWluIEogU3BlcnJ5PC9yZGY6bGk+PC9yZGY6QmFnPjwvZGM6Y3JlYXRvcj48L3JkZjpEZXNjcmlwdGlvbj48L3JkZjpSREY+PC9tZXRhZGF0YT48L3N2Zz4=");
           mask-size: contain;
-          transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+          @media not (-moz-bool-pref: "tab.groups.disable-animations") {
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+          }
         }
       }
 
