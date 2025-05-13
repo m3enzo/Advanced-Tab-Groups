@@ -20,7 +20,7 @@
   {
     "property": "tab.groups.theme-folders",
     "type": "checkbox",
-    "label": "Adds a folder icon to tab groups."
+    "label": "Colors the folder icon on tab groups based on the tab group's color."
   },
   {
     "property": "tab.groups.fill-folders",
