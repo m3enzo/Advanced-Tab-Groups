@@ -150,15 +150,17 @@ tab-group:not([split-view-group]) {
     }
   }
 
+  & .tab-group-label-container {
+    & > label {
+      justify-content: space-between !important;
+    }
+  }
+  
   /* Arrow UI */
   @media (-moz-bool-pref: "zen.view.sidebar-expanded") {
     @media (-moz-bool-pref: "tab.groups.add-arrow") {
       /* arrow icon */
       & .tab-group-label-container {
-        & > label {
-          justify-content: space-between !important;
-        }
-
         & > label::after {
           position: absolute !important;
           content: "" !important;
