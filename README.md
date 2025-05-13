@@ -58,8 +58,7 @@ If you're unfamiliar with `userChrome.css`, please refer to [this guide](https:/
 - **`tab.groups.theme-folders`**  
 - **`tab.groups.fill-folders`**
 - **`tab.groups.display-tab-range`**
-- **`tab.groups.hide-save-info`** (Recommend for the moment, until Firefox 136 is launched for Zen Browser, end of the month or early March.)
-- **`tab.groups.better-unload`**
+- **`tab.groups.disable-animations`**
 ---
 
 ## What Does This Do?  
