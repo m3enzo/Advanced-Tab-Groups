@@ -1,5 +1,11 @@
 [
   {
+    "property": "browser.tabs.groups.enabled",
+    "type": "checkbox",
+    "label": "Enables Tab Groups in the Zen Browser.",
+    "defaultValue": "true"
+  },
+  {
     "property": "tab.groups.background",
     "type": "checkbox",
     "label": "Enables background for tab groups."
@@ -20,7 +26,8 @@
   {
     "property": "tab.groups.theme-folders",
     "type": "checkbox",
-    "label": "Colors the folder icon on tab groups based on the tab group's color."
+    "label": "Colors the folder icon on tab groups based on the tab group's color.",
+    "defaultValue": "true"
   },
   {
     "property": "tab.groups.fill-folders",
@@ -35,6 +42,7 @@
   {
     "property": "tab.groups.add-arrow",
     "type": "checkbox",
-    "label": "Adds an arrow icon to tab groups."
+    "label": "Adds an arrow icon to tab groups.",
+    "defaultValue": "true"
   }
 ]
