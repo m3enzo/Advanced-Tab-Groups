@@ -4,14 +4,6 @@ CSS for Zen Browser's experimental Tab Groups using `userChrome.css`.
 
 Easy Installation: https://github.com/CosmoCreeper/Sine, go to Sine Mods (Where Zen Mods used to be) and put in "Anoms12/Advanced-Tab-Groups"
 
-> [!NOTE]
-> I am looking for new ideas and would love any that you all have. Please just start a [disscussion](https://github.com/Anoms12/Advanced-Tab-Groups/discussions/new?category=general) or make a [PR](https://github.com/Anoms12/Advanced-Tab-Groups/pulls) and I will help you with whatever the goal is (as long as it is a config). Currently I would like to get better icons and a better [open-collapse](https://github.com/Anoms12/Advanced-Tab-Groups/pull/33) animation similar to the one on Arc browser.
-
-
-> [!NOTE]
-> I do not have _accounts_ for reddit or discord. But I love [TFFC](https://github.com/TFFC-Anoms12/TFFC)
----
-
 ![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)  
 
 
