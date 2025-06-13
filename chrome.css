@@ -4,10 +4,9 @@
 
 @-moz-document url-prefix("chrome:") {
   /* General/Open UI */
-tab-group:not([split-view-group]) {
+tab-group:not([split-view-group],[header="true"]) {
   display: flex !important;
   flex-direction: column !important;
-  overflow: hidden !important;
   @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
     width: var(--tab-min-width) !important;
     margin: var(--tab-block-margin) auto !important;
@@ -351,3 +350,4 @@ tab-group:not([split-view-group]) {
   }
 } 
 }
+
