@@ -8,13 +8,13 @@
     "readme": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/README.md",
     "image": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/image.jpg",
     "author": "Anoms12",
-    "version": "9",
+    "version": "1.9.1",
     "tags": [
         "sine",
         "Tab Groups",
         "Tab Folders"
     ],
     "createdAt": "2025-05-13",
-    "updatedAt": "2025-06-01",
+    "updatedAt": "2025-06-0",
     "fork": ["zen"]
 }
