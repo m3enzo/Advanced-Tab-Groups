@@ -2,7 +2,7 @@
 
 CSS for Zen Browser's Tab Groups using `userChrome.css`. 
 
-![Advanced Tab Groups](https://github.com/user-attachments/assets/9541500c-4c91-4bf0-97b2-f8a519a0144f)  
+![Advanced Tab Groups](https://github.com/Anoms12/Advanced-Tab-Groups/blob/V2.0.0/image.png)  
 
 ## Setup
 
