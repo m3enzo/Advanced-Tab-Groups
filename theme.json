@@ -2,19 +2,21 @@
     "id": "advanced-tab-groups",
     "name": "Advanced Tab Groups",
     "description": "Advanced Tab Group CSS for Zen Browser ",
+    "js": true,
     "homepage": "https://github.com/Anoms12/Advanced-Tab-Groups",
     "preferences": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/preferences.json",
     "style": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/chrome.css",
     "readme": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/README.md",
-    "image": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/image.jpg",
-    "author": "Anoms12",
-    "version": "1.9.1",
+    "image": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/image.png",
+    "author": "12th",
+    "version": "2.0.0",
     "tags": [
-        "sine",
+        "Zen Browser",
         "Tab Groups",
-        "Tab Folders"
+        "Tab Folders",
+        "12th"
     ],
     "createdAt": "2025-05-13",
-    "updatedAt": "2025-06-13",
+    "updatedAt": "2025-06-17",
     "fork": ["zen"]
 }
