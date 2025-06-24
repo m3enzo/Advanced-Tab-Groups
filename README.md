@@ -8,7 +8,7 @@ CSS for Zen Browser's Tab Groups using `userChrome.css`.
 
 Advanced Tab Groups is made for [Sine](https://github.com/CosmoCreeper/Sine)! Please follow these steps to install the Mod.
 
-1. Go to the [Sine releases](https://github.com/CosmoCreeper/Sine/releases) and download the auto-installer for your sysyem from the latest stable build of the Mod Manager.
+1. Go to the [Sine releases](https://github.com/CosmoCreeper/Sine/releases) and download the auto-installer for your system from the latest stable build of the Mod Manager.
 
 2. Run the auto-installer as an admin and follow the instructions that are prompted.
 
@@ -18,9 +18,9 @@ Advanced Tab Groups is made for [Sine](https://github.com/CosmoCreeper/Sine)! Pl
 
 > [!NOTE]
 >
-> 1. If you are unable to run programs as an admin on your computer, you will be unable to install, as Sine modifys your Zen directory to install [fx-autoconfig](https://github.com/MrOtherGuy/fx-autoconfig) 
+> 1. If you are unable to run programs as an admin on your computer, you will be unable to install, as Sine modifies your Zen directory to install [fx-autoconfig](https://github.com/MrOtherGuy/fx-autoconfig) 
 >
-> 2. You may have to go to `about:support` and clear your startup chache if you do not see Sine in `about:preferences`
+> 2. You may have to go to `about:support` and clear your startup cache if you do not see Sine in `about:preferences`
 
 ## Configuration Options  
 
@@ -33,14 +33,14 @@ These prefs can be configured within the Sine UI after installation:
 
 
 ## What Does This Do?  
-This CSS & JS improves the functionality and appearance of Zen Browser's experimental Tab Groups.  
+This CSS & JS improve the functionality and appearance of Zen Browser's experimental Tab Groups.  
 
 ## Issues/Questions
  Any issues you encounter please create a ticket on the GitHub page and I will do what I can to help you quickly. If you have a question, just create a disscussion!
 
 ## Suggestions  
 
-Have an idea for a feature? Start a discussion! I'm happy to explore any Fireofx Based Customization related requests.  
+Have an idea for a feature? Start a discussion! I'm happy to explore any Firefox Based Customization related requests.  
 
 ## Credit  
 
