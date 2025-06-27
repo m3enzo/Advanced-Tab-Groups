@@ -1,6 +1,6 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V2.0.0 ====== */
+/* ====== V2.1.0 ====== */
 
 * {
   --zen-workspace-color-bg: light-dark(
@@ -58,13 +58,12 @@ tab-group {
       }
     }
   }
-
   &:not([split-view-group], [header]) {
     display: flex !important;
     flex-direction: column !important;
     margin: 2px 2px 0 2px !important;
     border-radius: calc(var(--zen-border-radius) + 2px) !important;
-    overflow: scroll;
+    overflow-y: : scroll;
 
     .tab-group-icon {
       transition: margin 0.3s ease;
@@ -84,7 +83,6 @@ tab-group {
     }
 
     .tab-group-label-container {
-      position: sticky !important;
       top: 0;
       flex-direction: row !important;
       --tab-group-color-pale: transparent !important;
@@ -99,7 +97,7 @@ tab-group {
 
       > label {
         background: transparent !important;
-        color: var(--sidebar-text-color) !important;
+        color: var(--tab-selected-textcolor) !important;
         font-weight: 400 !important;
         font-size: 12px !important;
         flex-grow: 1 !important;
@@ -110,7 +108,9 @@ tab-group {
         text-overflow: ellipsis !important;
         text-align: start !important;
         margin-inline-end: 0 !important;
-        margin-top: 3px !important;
+        &:-moz-window-inactive {
+          color: var(--toolbox-textcolor-inactive) !important;
+        }
       }
     }
 
@@ -154,6 +154,10 @@ tab-group {
     &[collapsed] {
       margin-bottom: 2px !important;
       overflow: visible;
+      
+      .tab-group-label {
+        color: var(--toolbox-textcolor) !important;
+      }
     }
 
     &:has(tab[hidden]) {
@@ -249,6 +253,147 @@ tab-group {
           }
         }
       }
+      &:hover {
+        .tab-group-action-button, .tab-group-tabs-button {
+          min-width: 32px !important;
+          max-width: 32px !important;
+          padding-left: 4px !important;
+          padding-right: 4px !important;
+        }
+      }
+     :has(.tab-group-tabs-button[open="true"]) .tab-group-tabs-button {
+           min-width: 32px !important;
+           max-width: 32px !important;
+          padding-left: 4px !important;
+          padding-right: 4px !important;
+        }
+     :has(.tab-group-action-button[open="true"]) .tab-group-action-button {
+           min-width: 32px !important;
+           max-width: 32px !important;
+          padding-left: 4px !important;
+          padding-right: 4px !important;
+        }
+    }
+
+    /* Add new action button styles */
+    .tab-group-action-button {
+      --toolbarbutton-inner-padding: 4px;
+      margin-left: auto !important;
+      flex-shrink: 0;
+      max-width: 0 !important;
+      padding: 0 !important;
+      &:hover,
+      &[open] {
+        list-style-image: url('chrome://browser/skin/zen-icons/menu.svg');
+      }
+    }
+    &:hover .tab-group-action-button {
+      list-style-image: url('chrome://browser/skin/zen-icons/menu.svg');
+    }
+
+    /* Add new tabs button styles */
+    .tab-group-tabs-button {
+      --toolbarbutton-inner-padding: 4px;
+      margin-left: auto !important;
+      flex-shrink: 0;
+      max-width: 0 !important;
+      padding: 0 !important;
+      &:hover,
+      &[open] {
+        list-style-image: url('chrome://browser/skin/zen-icons/search-glass.svg');
+      }
+    }
+    &:hover .tab-group-tabs-button {
+      list-style-image: url('chrome://browser/skin/zen-icons/search-glass.svg');
     }
   }
+}
+
+/* Add/merge Zen Groups Tabs List popup styles at the end */
+#zen-group-tabs-popup {
+  --arrowpanel-padding: 0;
+  background-color: var(--toolbar-bgcolor);
+  border-radius: var(--arrowpanel-border-radius);
+  --arrowpanel-border-color: var(--chrome-content-separator-color);
+  width: 250px;
+}
+#zen-group-tabs-popup #zen-group-tabs-search {
+  background-color: var(--toolbox-field-background-color) !important;
+  border: 1px solid var(--toolbox-field-border-color) !important;
+  border-radius: var(--toolbox-field-border-radius, 4px) !important;
+  color: var(--toolbox-field-color) !important;
+  margin: 0 !important;
+  padding: 5px 8px !important;
+  font-size: 1em;
+}
+#zen-group-tabs-popup #zen-group-tabs-search:focus-within {
+  border-color: gray !important;
+}
+#zen-group-tabs-popup .tabs-list-scrollbox {
+  padding: 4px;
+  overflow: scroll;
+  max-height: 450px;
+}
+.tabs-list-item {
+  position: relative;
+  height: 46px;
+  margin: 2px;
+  border-radius: var(--border-radius-medium);
+  margin-inline: var(--tab-block-margin);
+  cursor: default;
+}
+.tabs-list-item-background {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.tabs-list-item-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  direction: ltr;
+  mask-image: linear-gradient(to left, transparent, black var(--tab-label-mask-size));
+  height: 46px;
+  width: 218px;
+  margin-inline: var(--tab-block-margin);
+}
+.tabs-list-item:hover .tabs-list-item-background {
+  background-color: var(--tab-hover-background-color);
+  outline-color: var(--tab-hover-outline-color);
+}
+.tabs-list-item[selected="true"] .tabs-list-item-background {
+  background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: var(--tab-selected-shadow);
+  outline-color: var(--tab-selected-outline-color);
+  border-color: transparent;
+}
+.tabs-list-item-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+.tabs-list-item-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+.tabs-list-item-label,
+.tab-list-item-secondary-label {
+  max-width: 200px;
+  margin-left: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tabs-list-item-label {
+  color: var(--lwt-text-color);
+}
+.tab-list-item-secondary-label {
+  color: var(--lwt-text-color);
+  opacity: 0.9;
+  font-size: 0.8em;
 }
