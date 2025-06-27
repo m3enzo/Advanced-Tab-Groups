@@ -1,3 +1,7 @@
+/* ==== Tab groups ==== */
+/* https://github.com/Anoms12/Advanced-Tab-Groups */
+/* ====== V2.1.0 ====== */
+
 class ZenGroups {
     #initialized = false;
     #animationState = null;
