@@ -1,15 +1,15 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V2.1.0 ====== */
+/* ====== V2.3.0 ====== */
 
 * {
   --zen-workspace-color-bg: light-dark(
-    color-mix(in srgb, var(--zen-primary-color) 50%, white 50%),
-    color-mix(in srgb, var(--zen-primary-color) 50%, black 50%)
+    color-mix(in srgb, var(--zen-primary-color) 30%, white 70%),
+    color-mix(in srgb, var(--zen-primary-color) 40%, black 70%)
   ) !important;
   --zen-workspace-color-fg: light-dark(
-    color-mix(in srgb, var(--zen-primary-color) 20%, white 80%),
-    color-mix(in srgb, var(--zen-primary-color) 80%, black 20%)
+    color-mix(in srgb, var(--zen-primary-color) 5%, white 95%),
+    color-mix(in srgb, var(--zen-primary-color) 60%, black 40%)
   ) !important;
   --zen-workspace-color-stroke: light-dark(
     color-mix(in srgb, var(--zen-primary-color) 40%, black 60%),
