@@ -22,7 +22,7 @@
   {
     "property": "tab.groups.display-tab-range",
     "type": "checkbox",
-    "label": "Adds a line sowing where the tab group starts and stops."
+    "label": "Adds a line showing where the tab group starts and stops."
   },
   {
     "property": "tab.groups.add-arrow",
