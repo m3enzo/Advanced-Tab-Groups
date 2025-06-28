@@ -12,7 +12,7 @@ The pinned tab support is partially working but not easy or consistent, this wil
 1. Move desigred Tab (NOT TABS PLURAL!) to the pinned tab section
 2. right click and hit "Add Tab to Group" (This will move it down to the normal tab section)
 3. Drag the folder up to the disired spot in the pinned tab section
-4. 4. Add the rest of your desigred tabs to the new pinned folder (it will save across restart)
+4. Add the rest of your desigred tabs to the new pinned folder (it will save across restart)
   
 
 ## Setup
