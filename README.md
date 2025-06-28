@@ -3,6 +3,13 @@
 CSS for Zen Browser's Tab Groups using `userChrome.css`. 
 
 ![Advanced Tab Groups](https://github.com/Anoms12/Advanced-Tab-Groups/blob/V2.0.0/image.png)  
+
+## Acknowledgements
+
+This project would not be possible without octaviusz, someone working on Zen folders, and the dev of the base JS (ATG uses a modified version) for the mod. Please go give him a follow and star. 
+
+_His code was used with consent, but he needs more credit. I may rename the project to include his name._
+
 ## Notice
 
 The pinned tab support is partially working but not easy or consistent, this will be updated soon for full pinned tab support.
