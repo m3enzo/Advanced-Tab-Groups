@@ -9,7 +9,7 @@
     "readme": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/README.md",
     "image": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/image.png",
     "author": "12th & rwx",
-    "version": "2.3.0",
+    "version": "2.4.0",
     "tags": [
         "Zen Browser",
         "Tab Groups",
@@ -18,6 +18,6 @@
         "rwx"
     ],
     "createdAt": "2025-05-13",
-    "updatedAt": "2025-06-28",
+    "updatedAt": "2025-07-02",
     "fork": ["zen"]
 }
