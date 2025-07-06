@@ -8,8 +8,8 @@
     "style": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/chrome.css",
     "readme": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/README.md",
     "image": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/image.png",
-    "author": "12th & rwx",
-    "version": "2.4.0",
+    "author": "12th",
+    "version": "2.5.0s",
     "tags": [
         "Zen Browser",
         "Tab Groups",
@@ -18,6 +18,6 @@
         "rwx"
     ],
     "createdAt": "2025-05-13",
-    "updatedAt": "2025-07-02",
+    "updatedAt": "2025-07-06",
     "fork": ["zen"]
 }
