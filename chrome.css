@@ -1,7 +1,13 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V2.5.0 ====== */
-/* Example: animate tabs in/out of folder */
+/* ====== V2.6.0 ====== */
+
+tab-group {
+  & tab[label="New Tab"] {
+    display: none !important;
+  }
+}
+
 * {
   --zen-workspace-color-bg: light-dark(
     color-mix(in srgb, var(--zen-primary-color) 50%, white 50%),
@@ -159,10 +165,6 @@ tab-group {
       .tab-group-label {
         color: var(--toolbox-textcolor) !important;
       }
-    }
-
-    &:has(tab[hidden]) {
-      display: none !important;
     }
 
     &[has-focus],
