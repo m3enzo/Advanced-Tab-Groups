@@ -1,7 +1,6 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
 /* ====== V2.6.0 ====== */
-
 tab-group {
   & tab[label="New Tab"] {
     display: none !important;
@@ -420,8 +419,4 @@ tab-group {
 
 	#tab-group-tabs-popup * {
 		max-width: -moz-available;
-	}
-
-	tab-group .tab-group-container tab-group {
-		padding-left: 10px !important;
 	}
