@@ -5,7 +5,7 @@
     "js": true,
     "homepage": "https://github.com/Anoms12/Advanced-Tab-Groups",
     "preferences": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/preferences.json",
-    "style": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/chrome.css",
+    "style": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/userChrome.css",
     "readme": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/README.md",
     "image": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/image.png",
     "author": "12th",
