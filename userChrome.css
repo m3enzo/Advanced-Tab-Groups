@@ -1,6 +1,7 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V2.6.0 ====== */
+/* ====== V2.7.0 ====== */
+
 tab-group {
   & tab[label="New Tab"] {
     display: none !important;
@@ -68,8 +69,6 @@ tab-group {
     flex-direction: column !important;
     margin: 2px 2px 0 2px !important;
     border-radius: calc(var(--zen-border-radius) + 2px) !important;
-    overflow-y: scroll;
-    overflow-x: hidden !important;
 
     .tab-group-icon {
       transition: margin 0.3s ease;
