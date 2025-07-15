@@ -14,8 +14,8 @@ tab-group {
     color-mix(in srgb, var(--zen-primary-color) 50%, black 50%)
   ) !important;
   --zen-workspace-color-fg: light-dark(
-    color-mix(in srgb, var(--zen-primary-color) 20%, white 80%),
-    color-mix(in srgb, var(--zen-primary-color) 80%, black 20%)
+    color-mix(in srgb, var(--zen-primary-color) 70%, white 30%),
+    color-mix(in srgb, var(--zen-primary-color) 70%, black 30%)
   ) !important;
   --zen-workspace-color-stroke: light-dark(
     color-mix(in srgb, var(--zen-primary-color) 40%, black 60%),
@@ -65,13 +65,14 @@ tab-group {
     }
   }
   &:not([split-view-group], [header]) {
+    position: relative !important;
     display: flex !important;
     flex-direction: column !important;
     margin: 2px 2px 0 2px !important;
     border-radius: calc(var(--zen-border-radius) + 2px) !important;
 
     .tab-group-icon {
-      transition: margin 0.3s ease;
+       -moz-window-dragging: no-drag;
       flex-shrink: 0;
       display: flex;
       justify-content: center !important;
@@ -183,11 +184,7 @@ tab-group {
 
     /* PREFS*/
     @media (-moz-bool-pref: "tab.groups.background") {
-      background: color-mix(
-        in srgb,
-        var(--tab-group-color-invert) 12%,
-        transparent
-      ) !important;
+      background-color: color-mix(in srgb, var(--zen-workspace-color-fg) 40%, transparent);
       @media (-moz-bool-pref: "tab.groups.borders") {
         border-top: 1px solid #f2f2f21f !important;
         border-bottom: 1px solid #4442441f !important;
@@ -195,26 +192,18 @@ tab-group {
     }
 
     @media (-moz-bool-pref: "tab.groups.display-tab-range") {
-      overflow: hidden !important;
-      tab {
-        overflow: visible !important;
         &::before {
           content: "";
           position: absolute;
-          top: 50%;
-          width: 2px;
-          height: 41px !important;
-          background-color: light-dark(
-            var(--tab-group-color),
-            var(--tab-group-color-invert)
-          ) !important;
+          display: flex;
+          width: 1px;
+          height: calc(100% - 42px) !important;
+          background-color: color-mix(in srgb, var(--zen-workspace-color-bg) 50%, transparent);
           border-radius: 360px !important;
           z-index: 999 !important;
-          right: 160px;
-          left: 3px !important; /* Reset left positioning */
-          transform: translateX(-5px) !important;
+          top: 40px;
+          left: 10px !important;
         }
-      }
     }
 
     @media (-moz-bool-pref: "zen.view.sidebar-expanded") {
@@ -224,7 +213,6 @@ tab-group {
           & > label::after {
             position: absolute !important;
             content: "" !important;
-            position: absolute !important;
             right: 7% !important;
             top: 50% !important;
             transform: translateY(-50%) rotate(180deg) !important;
@@ -272,6 +260,19 @@ tab-group {
         max-width: 32px !important;
         padding-left: 4px !important;
         padding-right: 4px !important;
+      }
+    }
+    @media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
+        .tab-group-label-container {
+          &::after { background-color: transparent !important; 
+          } 
+        }
+      .tab-group-icon {
+        pointer-events: none !important;
+      }
+        .tab-group-label, .tab-group-tabs-button, .tab-group-action-button {
+          display: none !important;
+        }
       }
     }
 
@@ -419,3 +420,7 @@ tab-group {
 	#tab-group-tabs-popup * {
 		max-width: -moz-available;
 	}
+
+.tab-group-editor-panel {
+  display: none !important;
+}
