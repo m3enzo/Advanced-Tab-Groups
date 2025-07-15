@@ -196,13 +196,13 @@ tab-group {
           content: "";
           position: absolute;
           display: flex;
-          width: 1px;
+          width: 2px;
           height: calc(100% - 42px) !important;
-          background-color: color-mix(in srgb, var(--zen-workspace-color-bg) 50%, transparent);
+          background-color: color-mix(in srgb, var(--zen-workspace-color-bg) 80%, transparent);
           border-radius: 360px !important;
           z-index: 999 !important;
           top: 40px;
-          left: 10px !important;
+          left: 8px !important;
         }
     }
 
@@ -308,7 +308,7 @@ tab-group {
       list-style-image: url("chrome://browser/skin/zen-icons/search-glass.svg");
     }
   }
-}
+
 
 /* Tabs popup */
 	#tab-group-tabs-popup {
