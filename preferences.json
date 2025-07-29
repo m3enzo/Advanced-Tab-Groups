@@ -16,7 +16,7 @@
     "type": "checkbox",
     "label": "Adds a border for tab groups.",
     "conditions": [
-      {"if": {"property": "tab.groups.background", "value": true}}
+      { "if": { "property": "tab.groups.background", "value": true } }
     ]
   },
   {
@@ -33,6 +33,6 @@
   {
     "property": "tab.groups.use-firefox-colors",
     "type": "checkbox",
-    "label": "Use the default Firefox Colors instead of Zen Colors",
+    "label": "Use the default Firefox Colors instead of Zen Colors"
   }
 ]
