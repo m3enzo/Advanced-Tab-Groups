@@ -9,15 +9,15 @@
     "readme": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/README.md",
     "image": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/image.png",
     "author": "12th",
-    "version": "2.8.1s",
+    "version": "2.9.0s",
     "tags": [
         "Zen Browser",
+        "Vertical Tabs",
         "Tab Groups",
         "Tab Folders",
-        "12th",
-        "rwx"
+        "12th"
     ],
     "createdAt": "2025-05-13",
-    "updatedAt": "2025-07-15",
+    "updatedAt": "2025-07-28",
     "fork": ["zen"]
 }
