@@ -1,6 +1,6 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V2.8.1s ====== */
+/* ====== V2.9.0s ====== */
 
 tab-group {
   & tab[label="New Tab"] {
@@ -8,19 +8,32 @@ tab-group {
   }
 }
 
-* {
-  --zen-workspace-color-bg: light-dark(
-    color-mix(in srgb, var(--zen-primary-color) 50%, white 50%),
-    color-mix(in srgb, var(--zen-primary-color) 50%, black 50%)
-  ) !important;
-  --zen-workspace-color-fg: light-dark(
-    color-mix(in srgb, var(--zen-primary-color) 70%, white 30%),
-    color-mix(in srgb, var(--zen-primary-color) 70%, black 30%)
-  ) !important;
-  --zen-workspace-color-stroke: light-dark(
-    color-mix(in srgb, var(--zen-primary-color) 40%, black 60%),
-    color-mix(in srgb, var(--zen-primary-color) 40%, white 60%)
-  ) !important;
+tab-group {
+  @media not (-moz-bool-pref: "tab.groups.use-firefox-colors") {
+    --zen-workspace-color-bg: light-dark(
+      color-mix(in srgb, var(--zen-primary-color) 50%, white 50%),
+      color-mix(in srgb, var(--zen-primary-color) 50%, black 50%)
+    ) !important;
+    --zen-workspace-color-fg: light-dark(
+      color-mix(in srgb, var(--zen-primary-color) 70%, white 30%),
+      color-mix(in srgb, var(--zen-primary-color) 70%, black 30%)
+    ) !important;
+    --zen-workspace-color-stroke: light-dark(
+      color-mix(in srgb, var(--zen-primary-color) 40%, black 60%),
+      color-mix(in srgb, var(--zen-primary-color) 40%, white 60%)
+    ) !important;
+  }
+  @media (-moz-bool-pref: "tab.groups.use-firefox-colors") {
+    --zen-workspace-color-bg: light-dark(
+      color-mix(in srgb, var(--tab-group-color-invert) 50%, white 50%),
+      color-mix(in srgb, var(--tab-group-color) 50%, black 50%)
+    ) !important;
+    --zen-workspace-color-fg: light-dark(
+      color-mix(in srgb, var(--tab-group-color-invert) 70%, white 30%),
+      color-mix(in srgb, var(--tab-group-color) 70%, black 30%)
+    ) !important;
+    --zen-workspace-color-stroke: light-dark(black, white) !important;
+  }
 }
 
 #tab-group-rename-input {
@@ -102,10 +115,13 @@ tab-group {
       }
 
       > label {
+        display: flex !important;
+        align-items: center !important;
         background: transparent !important;
         color: var(--tab-selected-textcolor) !important;
         font-weight: 400 !important;
         font-size: 12px !important;
+        line-height: 36px !important;
         flex-grow: 1 !important;
         flex-shrink: 1 !important;
         min-width: 0 !important;
