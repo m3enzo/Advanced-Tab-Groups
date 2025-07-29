@@ -1,6 +1,6 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V2.9.0s ====== */
+/* ====== V2.9.1s ====== */
 
 
 class ZenGroups {
