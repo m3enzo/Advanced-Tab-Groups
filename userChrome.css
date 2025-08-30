@@ -1,6 +1,6 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V2.9.1s ====== */
+/* ====== v3.0.0b ====== */
 tab-group {
     --advanced-tab-color-primary: light-dark(var(--tab-group-color), var(--tab-group-color-invert));
     --advanced-tab-color-secondary: light-dark(
