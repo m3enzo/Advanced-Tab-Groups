@@ -1,10 +1,6 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
-/* ====== V2.9.1s ====== */
-
-/* ==== Advanced Tab Groups - Close Button ==== */
-/* Adds close button to tab groups (excluding folders) */
-/* ====== V1.0.0 ====== */
+/* ====== v3.0.0b ====== */
 
 class AdvancedTabGroupsCloseButton {
   constructor() {
