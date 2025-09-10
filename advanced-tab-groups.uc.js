@@ -21,6 +21,9 @@ class AdvancedTabGroupsCloseButton {
     // Set up observer for all tab groups
     this.setupObserver();
 
+    // Remove built-in tab group editor menus if they exist
+    this.removeBuiltinTabGroupMenu();
+
     // Process existing groups
     this.processExistingGroups();
 
@@ -31,6 +34,9 @@ class AdvancedTabGroupsCloseButton {
     setInterval(() => {
       this.saveTabGroupColors();
     }, 30000);
+
+    // Listen for tab group creation events from the platform component
+    document.addEventListener("TabGroupCreate", this.onTabGroupCreate.bind(this));
   }
 
   setupObserver() {
@@ -39,6 +45,14 @@ class AdvancedTabGroupsCloseButton {
         if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
           mutation.addedNodes.forEach((node) => {
             if (node.nodeType === Node.ELEMENT_NODE) {
+              // Proactively remove Firefox built-in tab group editor menu if it appears
+              if (
+                node.id === "tab-group-editor" ||
+                node.nodeName?.toLowerCase() === "tabgroup-meu" ||
+                node.querySelector?.("#tab-group-editor, tabgroup-meu")
+              ) {
+                this.removeBuiltinTabGroupMenu(node);
+              }
               // Check if the added node is a tab-group
               if (node.tagName === "tab-group") {
                 this.processGroup(node);
@@ -58,6 +72,27 @@ class AdvancedTabGroupsCloseButton {
     });
 
     console.log("[AdvancedTabGroups] Observer set up");
+  }
+
+  // Remove Firefox's built-in tab group editor menu elements if present
+  removeBuiltinTabGroupMenu(root = document) {
+    try {
+      const list = root.querySelectorAll
+        ? root.querySelectorAll("#tab-group-editor, tabgroup-meu")
+        : [];
+      list.forEach((el) => {
+        console.log("[AdvancedTabGroups] Removing built-in tab group menu:", el.id || el.nodeName);
+        el.remove();
+      });
+      // Fallback direct id lookup
+      const byId = root.getElementById ? root.getElementById("tab-group-editor") : null;
+      if (byId) {
+        console.log("[AdvancedTabGroups] Removing built-in tab group menu by id fallback");
+        byId.remove();
+      }
+    } catch (e) {
+      console.error("[AdvancedTabGroups] Error removing built-in tab group menu:", e);
+    }
   }
 
   processExistingGroups() {
@@ -98,7 +133,7 @@ class AdvancedTabGroupsCloseButton {
     }
   }
 
-  renameGroupStart(group) {
+  renameGroupStart(group, selectAll = true) {
     if (this._groupEdited) return;
     const labelElement = group.querySelector('.tab-group-label');
     if (!labelElement) return;
@@ -108,11 +143,23 @@ class AdvancedTabGroupsCloseButton {
     labelElement.style.display = 'none';
     const input = document.createElement('input');
     input.id = 'tab-label-input';
+    input.type = 'text';
     input.value = group.label || labelElement.textContent || '';
     input.setAttribute('autocomplete', 'off');
+    input.style.caretColor = 'auto';
     labelElement.after(input);
+    // Focus after insertion
     input.focus();
-    input.select();
+    if (selectAll) {
+      // Select all text for manual rename
+      input.select();
+    } else {
+      // Place cursor at end for auto-rename on new groups
+      try {
+        const len = input.value.length;
+        input.setSelectionRange(len, len);
+      } catch (_) {}
+    }
     input.addEventListener('keydown', this.renameGroupKeydown.bind(this));
     input.addEventListener('blur', this.renameGroupHalt.bind(this));
   }
@@ -208,17 +255,14 @@ class AdvancedTabGroupsCloseButton {
     group.classList.remove('tab-group-editor-mode-create');
 
     // If the group is new (no label or default label), start renaming and set color
-    if (!group.label || group.label === 'New Group' || group.label === '') {
+    if (!group.label || group.label === '' || ("defaultGroupName" in group && group.label === group.defaultGroupName)) {
       // Start renaming
-      this.renameGroupStart(group);
+      this.renameGroupStart(group, false); // Don't select all for new groups
       // Set color to average favicon color
       if (typeof group._useFaviconColor === 'function') {
-        group._useFaviconColor();
+        group._useFaviconColor()
       }
     }
-
-    // Mark as processed
-    group.setAttribute("data-close-button-added", "true");
 
     // Add context menu to the group
     this.addContextMenu(group);
@@ -229,14 +273,12 @@ class AdvancedTabGroupsCloseButton {
     );
   }
 
-  addContextMenu(group) {
-    // Prevent duplicate context menus
-    if (group._contextMenuAdded) return;
-    group._contextMenuAdded = true;
+  // Ensure a single, shared context menu exists and is wired up
+  ensureSharedContextMenu() {
+    if (this._sharedContextMenu) return this._sharedContextMenu;
 
-    // Create context menu using XUL parsing
     const contextMenuFrag = window.MozXULElement.parseXULToFragment(`
-      <menupopup class="tab-group-context-menu">
+      <menupopup id="advanced-tab-groups-context-menu">
         <menu class="change-group-color" label="Change Group Color">
           <menupopup>
             <menuitem class="set-group-color" 
@@ -246,6 +288,7 @@ class AdvancedTabGroupsCloseButton {
           </menupopup>
         </menu>
         <menuitem class="rename-group" label="Rename Group"/>
+        <menuseparator/>
         <menuitem class="convert-group-to-folder" 
                   label="Convert Group to Folder"/>
       </menupopup>
@@ -254,7 +297,9 @@ class AdvancedTabGroupsCloseButton {
     const contextMenu = contextMenuFrag.firstElementChild;
     document.body.appendChild(contextMenu);
 
-    // Add event listeners to menu items
+    // Track which group is targeted while the popup is open
+    this._contextMenuCurrentGroup = null;
+
     const setGroupColorItem = contextMenu.querySelector(".set-group-color");
     const useFaviconColorItem = contextMenu.querySelector(".use-favicon-color");
     const renameGroupItem = contextMenu.querySelector(".rename-group");
@@ -264,39 +309,99 @@ class AdvancedTabGroupsCloseButton {
 
     if (setGroupColorItem) {
       setGroupColorItem.addEventListener("command", () => {
-        group._setGroupColor();
+        const group = this._contextMenuCurrentGroup;
+        if (group && typeof group._setGroupColor === "function") {
+          group._setGroupColor();
+        }
       });
     }
 
     if (useFaviconColorItem) {
       useFaviconColorItem.addEventListener("command", () => {
-        group._useFaviconColor();
+        const group = this._contextMenuCurrentGroup;
+        if (group && typeof group._useFaviconColor === "function") {
+          group._useFaviconColor();
+        }
       });
     }
 
     if (renameGroupItem) {
       renameGroupItem.addEventListener("command", () => {
-        this.renameGroupStart(group);
+        const group = this._contextMenuCurrentGroup;
+        if (group) this.renameGroupStart(group);
       });
     }
 
     if (convertToFolderItem) {
       convertToFolderItem.addEventListener("command", () => {
-        this.convertGroupToFolder(group);
+        const group = this._contextMenuCurrentGroup;
+        if (group) this.convertGroupToFolder(group);
       });
     }
+
+    // Clear the current group when the menu closes (ready to be reused)
+    contextMenu.addEventListener("popuphidden", () => {
+      this._contextMenuCurrentGroup = null;
+    });
+
+    this._sharedContextMenu = contextMenu;
+    return this._sharedContextMenu;
+  }
+
+  // Handle platform-dispatched creation event for groups
+  onTabGroupCreate(event) {
+    try {
+      const target = event.target;
+      const group = target?.closest ? (target.closest('tab-group') || (target.tagName === 'tab-group' ? target : null)) : null;
+      if (!group) return;
+
+      // Remove built-in menu that may be created alongside new groups
+      this.removeBuiltinTabGroupMenu();
+
+      // Ensure group gets processed (buttons/context menu) if not already
+      if (!group.hasAttribute("data-close-button-added")) {
+        this.processGroup(group);
+      }
+
+      // Auto-start rename and apply favicon color when newly created
+      if (!group.label || group.label === '' || ("defaultGroupName" in group && group.label === group.defaultGroupName)) {
+        if (!this._groupEdited) {
+          this.renameGroupStart(group, false); // Don't select all for new groups
+        }
+        if (typeof group._useFaviconColor === 'function') {
+          setTimeout(() => group._useFaviconColor(), 300);
+        }
+      }
+    } catch (e) {
+      console.error('[AdvancedTabGroups] Error handling TabGroupCreate:', e);
+    }
+  }
+
+  addContextMenu(group) {
+    // Prevent duplicate listener wiring per group
+    if (group._contextMenuAdded) return;
+    group._contextMenuAdded = true;
+
+    // Create shared menu once
+    const sharedMenu = this.ensureSharedContextMenu();
 
     // Attach context menu only to the label container
     const labelContainer = group.querySelector(".tab-group-label-container");
     if (labelContainer) {
+      // Strip default context attribute to prevent built-in menu
+      labelContainer.removeAttribute("context");
       labelContainer.addEventListener("contextmenu", (event) => {
         event.preventDefault();
         event.stopPropagation();
-        contextMenu.openPopupAtScreen(event.screenX, event.screenY, false);
+        this._contextMenuCurrentGroup = group;
+        sharedMenu.openPopupAtScreen(event.screenX, event.screenY, false);
       });
     }
 
-    // Add methods to the group for context menu actions
+    // Also strip any context attribute from the group itself
+    group.removeAttribute("context");
+
+    // Add methods to the group for context menu actions (used by commands)
     group._renameGroupFromContextMenu = () => {
       this.renameGroupStart(group);
     };
@@ -372,6 +477,9 @@ class AdvancedTabGroupsCloseButton {
             const originalOnWorkspaceChange =
               window.gZenThemePicker.onWorkspaceChange;
             const originalGetGradient = window.gZenThemePicker.getGradient;
+
+            // Capture AdvancedTabGroups instance for callbacks inside overrides
+            const atg = this;
 
             // Override the updateCurrentWorkspace method to prevent browser background changes
             window.gZenThemePicker.updateCurrentWorkspace = async function (
@@ -468,8 +576,8 @@ class AdvancedTabGroupsCloseButton {
                       gradient
                     );
 
-                    // Save the color to persistent storage
-                    this.saveTabGroupColors();
+                    // Save the color to persistent storage (use plugin instance, not theme picker)
+                    atg.saveTabGroupColors();
                   }
                 } catch (error) {
                   console.error(
@@ -613,8 +721,8 @@ class AdvancedTabGroupsCloseButton {
                       gradient
                     );
 
-                    // Save the color to persistent storage
-                    this.saveTabGroupColors();
+                    // Save the color to persistent storage (use plugin instance)
+                    atg.saveTabGroupColors();
                   }
                 }
 
@@ -1336,7 +1444,7 @@ class AdvancedTabGroupsCloseButton {
 
     const stashButton = window.MozXULElement.parseXULToFragment(`
           <menuseparator/>
-          <menu id="open-group-stash" label="Open Group Stash">
+          <menu id="open-group-stash" label="Open Group Stash (Coming Soon! Sorry)">
             <!-- Things will go here like stashed groups -->
           </menu>
         `);
