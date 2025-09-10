@@ -1,13 +1,10 @@
 /* ==== Tab groups ==== */
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
 /* ====== v3.0.0b ====== */
-tab-group {
-    --advanced-tab-color-primary: light-dark(var(--tab-group-color), var(--tab-group-color-invert));
-    --advanced-tab-color-secondary: light-dark(
-      color-mix(in srgb, var(--tab-group-color) 60%, transparent),
-      color-mix(in srgb, var(--tab-group-color-invert) 60%, transparent)
-    );
+tab-group:not([split-view-group]) {
+    --advanced-tab-color: var(--tab-group-color);
     --tab-group-color-pale: transparent !important;
+
     .tab-group-label-container {
         height: 36px !important;
         padding: 0 !important;
@@ -16,6 +13,41 @@ tab-group {
         display: flex !important;
         align-items: center !important;
         padding-right: 10px !important;
+
+        .tab-group-icon-container {
+            margin-left: 10px;
+            margin-right: 6px;
+            left: 0;
+
+            .tab-group-icon {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                background: var(--advanced-tab-color);
+                display: flex;
+                min-width: 16px !important;
+                width: 16px;
+                height: 16px;
+                border-radius: 4px;
+                position: relative;
+
+                &:hover {
+                    .stash-icon {
+                        appearance: none;
+                        -moz-context-properties: fill, fill-opacity;
+                        /*list-style-image: url(chrome://browser/skin/zen-icons/arrow-down.svg) !important; */
+                        border-radius: 4px;
+                        color: inherit;
+                        fill: currentColor;
+                        padding: 1px;
+                        width: 16px;
+                        height: auto;
+                        outline: var(--toolbarbutton-outline);
+                    }
+                }
+            }
+        }
+
         .tab-group-label {
             margin-right: auto !important;
             width: 100%;
@@ -26,38 +58,18 @@ tab-group {
             flex-direction: row;
             align-items: center;
             gap: 5px;
-            &::before {
-                margin-left: 7px;
-                margin-right: 6px;
-                display: flex;
-                content: "";
-                min-width: 16px !important;
-                width: 16px;
-                height: 16px;
-                border-radius: 4px;
-                background-color: var(--advanced-tab-color-primary);
-                position: relative;
-                left: 0;
-            }
-            .tab-group-rename-input {
-                white-space: nowrap !important;
-                overflow-x: scroll !important;
-                margin: 0 !important;
-                background: transparent !important;
-                border: none !important;
-                padding: 0 !important;
-                outline: none !important !important;
-                border-radius: 0 !important;
-            }
         }
+
         &:hover {
             background-color: var(--tab-hover-background-color) !important;
+
             .tab-close-button {
                 -moz-window-dragging: no-drag !important;
                 visibility: visible !important;
             }
         }
     }
+
     .tab-group-container {
         max-height: 100%;
         transition: max-height 0.3s ease, opacity 0.3s ease;
@@ -69,12 +81,13 @@ tab-group {
             position: absolute;
             left: -2px !important;
             top: 0;
-            background-color: var(--advanced-tab-color-secondary);
+            background: var(--advanced-tab-color);
             height: 100%;
             width: 2px;
             pointer-events: none !important;
-            }
         }
+    }
+
     &[collapsed=""] {
         .tab-group-container {
             max-height: 0 !important;

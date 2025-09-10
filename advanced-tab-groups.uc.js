@@ -74,48 +74,59 @@ class AdvancedTabGroupsCloseButton {
 
   // Track currently edited group for rename
   _editingGroup = null;
+  _groupEdited = null;
 
-  _renameGroup(group, labelElement) {
-    // Prevent multiple renames at once
-    if (this._editingGroup) return;
-    this._editingGroup = group;
+  renameGroupKeydown(event) {
+    event.stopPropagation();
+    if (event.key === 'Enter') {
+      let label = this._groupEdited;
+      let input = document.getElementById('tab-label-input');
+      let newName = input.value.trim();
+      document.documentElement.removeAttribute('zen-renaming-group');
+      input.remove();
+      if (label && newName) {
+        const group = label.closest('tab-group');
+        if (group && newName !== group.label) {
+          group.label = newName;
+        }
+      }
+      label.classList.remove('tab-group-label-editing');
+      label.style.display = '';
+      this._groupEdited = null;
+    } else if (event.key === 'Escape') {
+      event.target.blur();
+    }
+  }
 
-    // Add editing class for styling and hide label
-    labelElement.classList.add("tab-group-label-editing");
-    labelElement.style.display = "none";
-
-    // Create input and set value
-    const input = document.createElement("input");
-    input.id = "tab-group-label-input";
-    input.value = group.label || labelElement.textContent || "";
-
-    // Insert input after labelElement
+  renameGroupStart(group) {
+    if (this._groupEdited) return;
+    const labelElement = group.querySelector('.tab-group-label');
+    if (!labelElement) return;
+    this._groupEdited = labelElement;
+    document.documentElement.setAttribute('zen-renaming-group', 'true');
+    labelElement.classList.add('tab-group-label-editing');
+    labelElement.style.display = 'none';
+    const input = document.createElement('input');
+    input.id = 'tab-label-input';
+    input.value = group.label || labelElement.textContent || '';
+    input.setAttribute('autocomplete', 'off');
     labelElement.after(input);
     input.focus();
     input.select();
+    input.addEventListener('keydown', this.renameGroupKeydown.bind(this));
+    input.addEventListener('blur', this.renameGroupHalt.bind(this));
+  }
 
-    // Handle commit/cancel
-    const finishEdit = (commit) => {
-      if (commit) {
-        const newValue = input.value.trim();
-        if (newValue && newValue !== group.label) {
-          group.label = newValue;
-        }
-      }
-      input.remove();
-      labelElement.classList.remove("tab-group-label-editing");
-      labelElement.style.display = "";
-      this._editingGroup = null;
-    };
-
-    input.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        finishEdit(true);
-      } else if (event.key === "Escape") {
-        finishEdit(false);
-      }
-    });
-    input.addEventListener("blur", () => finishEdit(false));
+  renameGroupHalt(event) {
+    if (document.activeElement === event.target || !this._groupEdited) {
+      return;
+    }
+    document.documentElement.removeAttribute('zen-renaming-group');
+    let input = document.getElementById('tab-label-input');
+    if (input) input.remove();
+    this._groupEdited.classList.remove('tab-group-label-editing');
+    this._groupEdited.style.display = '';
+    this._groupEdited = null;
   }
 
   processGroup(group) {
@@ -148,25 +159,27 @@ class AdvancedTabGroupsCloseButton {
       return;
     }
 
-    // Create and inject the icon container at the beginning of labelContainer
-    const iconContainerFrag = window.MozXULElement.parseXULToFragment(
-      '<div class="tab-group-icon-container"><div class="tab-group-icon"></div></div>'
-    );
-    const iconContainer = iconContainerFrag.firstElementChild;
+    // Create and inject the icon container and close button together for readability
+    const groupDomFrag = window.MozXULElement.parseXULToFragment(`
+      <div class="tab-group-icon-container">
+        <div class="tab-group-icon">
+          <image class="group-stash-button stash-icon" role="button" keyNav="false" tooltiptext="Stash Group"/>
+        </div>
+      </div>
+      <image class="tab-close-button close-icon" role="button" keyNav="false" tooltiptext="Close Group"/>
+    `);
+    const iconContainer = groupDomFrag.children[0];
+    const closeButton = groupDomFrag.children[1];
 
     // Insert the icon container at the beginning of the label container
     labelContainer.insertBefore(iconContainer, labelContainer.firstChild);
+    // Add the close button to the label container
+    labelContainer.appendChild(closeButton);
 
     console.log(
-      "[AdvancedTabGroups] Icon container injected for group:",
+      "[AdvancedTabGroups] Icon container and close button injected for group:",
       group.id
     );
-
-    // Create close button
-    const closeButtonFrag = window.MozXULElement.parseXULToFragment(
-      '<image class="tab-close-button close-icon" role="button" keyNav="false" tooltiptext="Close Group"/>'
-    );
-    const closeButton = closeButtonFrag.firstElementChild;
 
     // Add click event listener
     closeButton.addEventListener("click", (event) => {
@@ -191,23 +204,17 @@ class AdvancedTabGroupsCloseButton {
       }
     });
 
-    // Add the close button to the label container
-    labelContainer.appendChild(closeButton);
+    // Remove editor mode class if present (prevent editor mode on new group)
+    group.classList.remove('tab-group-editor-mode-create');
 
-    // Add double-click functionality to rename the group
-    const labelElement = labelContainer.querySelector(".tab-group-label");
-    if (labelElement) {
-      labelElement.addEventListener("dblclick", (event) => {
-        event.stopPropagation();
-        event.preventDefault();
-        console.log(
-          "[AdvancedTabGroups] Double-clicked label for group:",
-          group.id
-        );
-
-        // Use the same approach as the ZenGroups script
-        this._renameGroup(group, labelElement);
-      });
+    // If the group is new (no label or default label), start renaming and set color
+    if (!group.label || group.label === 'New Group' || group.label === '') {
+      // Start renaming
+      this.renameGroupStart(group);
+      // Set color to average favicon color
+      if (typeof group._useFaviconColor === 'function') {
+        group._useFaviconColor();
+      }
     }
 
     // Mark as processed
@@ -238,6 +245,7 @@ class AdvancedTabGroupsCloseButton {
                       label="Use Average Favicon Color"/>
           </menupopup>
         </menu>
+        <menuitem class="rename-group" label="Rename Group"/>
         <menuitem class="convert-group-to-folder" 
                   label="Convert Group to Folder"/>
       </menupopup>
@@ -249,6 +257,7 @@ class AdvancedTabGroupsCloseButton {
     // Add event listeners to menu items
     const setGroupColorItem = contextMenu.querySelector(".set-group-color");
     const useFaviconColorItem = contextMenu.querySelector(".use-favicon-color");
+    const renameGroupItem = contextMenu.querySelector(".rename-group");
     const convertToFolderItem = contextMenu.querySelector(
       ".convert-group-to-folder"
     );
@@ -262,6 +271,12 @@ class AdvancedTabGroupsCloseButton {
     if (useFaviconColorItem) {
       useFaviconColorItem.addEventListener("command", () => {
         group._useFaviconColor();
+      });
+    }
+
+    if (renameGroupItem) {
+      renameGroupItem.addEventListener("command", () => {
+        this.renameGroupStart(group);
       });
     }
 
@@ -283,10 +298,7 @@ class AdvancedTabGroupsCloseButton {
 
     // Add methods to the group for context menu actions
     group._renameGroupFromContextMenu = () => {
-      const labelElement = group.querySelector(".tab-group-label");
-      if (labelElement) {
-        this._renameGroup(group, labelElement);
-      }
+      this.renameGroupStart(group);
     };
 
     group._closeGroupFromContextMenu = () => {
@@ -1361,5 +1373,31 @@ class AdvancedTabGroupsCloseButton {
         );
       }
     });
+
+
+
+    // Hide tab group menu items for folders in tab context menu
+    const tabContextMenu = document.getElementById("tabContextMenu");
+    if (tabContextMenu) {
+      tabContextMenu.addEventListener("popupshowing", () => {
+        // selecting folders to hide
+        const foldersToHide = Array.from(gBrowser.tabContainer.querySelectorAll("zen-folder")).map((f) => f.id);
+
+        // finding menu items with tab group id 
+        const groupMenuItems = document.querySelectorAll("#context_moveTabToGroupPopupMenu menuitem[tab-group-id]");
+
+        // Iterate over each item and hide one present in folderstohide array.
+        for (const menuItem of groupMenuItems) {
+          const tabGroupId = menuItem.getAttribute("tab-group-id");
+
+          if (foldersToHide.includes(tabGroupId)) {
+            menuItem.hidden = true;
+          }
+        }
+      });
+    }
+    //  ^
+    //  |
+    // Thx to Bibek for this snippet! bibekbhusal on Discord.
   }
 })();
