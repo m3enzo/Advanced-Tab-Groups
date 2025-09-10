@@ -289,6 +289,7 @@ class AdvancedTabGroupsCloseButton {
         </menu>
         <menuitem class="rename-group" label="Rename Group"/>
         <menuseparator/>
+        <menuitem class="ungroup-tabs" label="Ungroup Tabs"/>
         <menuitem class="convert-group-to-folder" 
                   label="Convert Group to Folder"/>
       </menupopup>
@@ -303,6 +304,7 @@ class AdvancedTabGroupsCloseButton {
     const setGroupColorItem = contextMenu.querySelector(".set-group-color");
     const useFaviconColorItem = contextMenu.querySelector(".use-favicon-color");
     const renameGroupItem = contextMenu.querySelector(".rename-group");
+    const ungroupTabsItem = contextMenu.querySelector(".ungroup-tabs");
     const convertToFolderItem = contextMenu.querySelector(
       ".convert-group-to-folder"
     );
@@ -329,6 +331,19 @@ class AdvancedTabGroupsCloseButton {
       renameGroupItem.addEventListener("command", () => {
         const group = this._contextMenuCurrentGroup;
         if (group) this.renameGroupStart(group);
+      });
+    }
+
+    if (ungroupTabsItem) {
+      ungroupTabsItem.addEventListener("command", () => {
+        const group = this._contextMenuCurrentGroup;
+        if (group && typeof group.ungroupTabs === "function") {
+          try {
+            group.ungroupTabs();
+          } catch (error) {
+            console.error("[AdvancedTabGroups] Error ungrouping tabs:", error);
+          }
+        }
       });
     }
 
