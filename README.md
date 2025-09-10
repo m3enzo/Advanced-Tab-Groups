@@ -1,4 +1,4 @@
-![FocuSee Project 2025-09-10 16-31-29](https://github.com/user-attachments/assets/7ad77204-dbf2-4233-b94e-a8d48bdda24d)# Advanced Tab Groups  
+# Advanced Tab Groups  
 
 CSS for Zen Browser's Tab Groups using `userChrome.css`. 
 
