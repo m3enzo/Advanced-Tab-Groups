@@ -84,7 +84,7 @@ tab-group:not([split-view-group]) {
         max-height: 40px;
         opacity: 1;
         overflow: hidden;
-        transition: max-height 0.25s ease, opacity 0.25s ease !important;
+        transition: max-height 0.10s ease, opacity 0.10s ease !important;
       }
     }
   
@@ -97,4 +97,3 @@ tab-group:not([split-view-group]) {
       }
     }
   }
-  
