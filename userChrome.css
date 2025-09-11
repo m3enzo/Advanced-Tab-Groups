@@ -44,6 +44,7 @@ tab-group:not([split-view-group]) {
       }
   
       .tab-group-label {
+        align-self: auto;
         margin-right: auto !important;
         width: 100%;
         background: transparent !important;
