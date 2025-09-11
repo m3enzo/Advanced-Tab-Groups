@@ -1,12 +1,10 @@
 # Advanced Tab Groups  
 
-CSS for Zen Browser's Tab Groups using `userChrome.css`. 
+Tab groups for Zen Browser
 
 <img width="161" height="325" alt="image" src="https://github.com/user-attachments/assets/fdcb26fd-548c-40eb-b682-0e6afc95a0cb" />
 
 ![Advanced Tab Groups Video](https://github.com/user-attachments/assets/37a5bc34-6b87-4ce2-900c-2e2c5ebfc125)
-
-Adds Tab Groups to Zen Browser!
 
 ---
 
