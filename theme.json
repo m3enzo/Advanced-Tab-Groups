@@ -1,7 +1,7 @@
 {
     "id": "advanced-tab-groups",
     "name": "Advanced Tab Groups (BETA)",
-    "description": Tab Groups for Zen Browser",
+    "description": "Tab Groups for Zen Browser",
     "js": true,
     "homepage": "https://github.com/Anoms12/Advanced-Tab-Groups",
     "preferences": "https://raw.githubusercontent.com/Anoms12/Advanced-Tab-Groups/main/preferences.json",
