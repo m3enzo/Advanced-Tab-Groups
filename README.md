@@ -18,7 +18,9 @@ Tab groups for Zen Browser
 - [ ] Add icon support
 - [ ] Improve animations (mainly for the line, it does not get animated when you add a tab)
 - [ ] Add the stashing feature (soon™)
+
 These are in no specific order and just an idea of what is coming for the `v3.x.x` release line. I may also add star features because I wanna overtake Nebula
+
 ---
 ## Acknowledgements
 Thanks to [BibekBhusal0](https://github.com/BibekBhusal0) for fixing various issues!
