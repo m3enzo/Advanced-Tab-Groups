@@ -1,7 +1,7 @@
 {
     "id": "advanced-tab-groups",
-    "name": "Advanced Tab Groups",
-    "description": "Folders for Zen Browser",
+    "name": "Advanced Tab Groups (BETA)",
+    "description": "Tab Groups for Zen Browser",
     "js": true,
     "homepage": "https://github.com/Wacky-Wombat/Advanced-Tab-Groups-dev",
     "preferences": "https://raw.githubusercontent.com/Wacky-Wombat/Advanced-Tab-Groups-dev/main/preferences.json",
@@ -17,7 +17,7 @@
         "Tab Folders",
         "12th"
     ],
-    "createdAt": "2025-09-10",
-    "updatedAt": "2025-09-12 08:01",
+    "createdAt": "2025-05-13",
+    "updatedAt": "2025-09-10 15:30",
     "fork": ["zen"]
 }
