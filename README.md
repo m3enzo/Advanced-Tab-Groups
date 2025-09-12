@@ -2,11 +2,10 @@
 
 Tab groups for Zen Browser
 
-<img width="161" height="325" alt="image" src="https://github.com/user-attachments/assets/fdcb26fd-548c-40eb-b682-0e6afc95a0cb" />
-
-![Advanced Tab Groups Video](https://github.com/user-attachments/assets/37a5bc34-6b87-4ce2-900c-2e2c5ebfc125)
-
----
+<p align="center">
+  <img width="161" height="325" alt="image" src="https://github.com/user-attachments/assets/fdcb26fd-548c-40eb-b682-0e6afc95a0cb" />
+  <img width="325" alt="Advanced Tab Groups Video" src="https://github.com/user-attachments/assets/37a5bc34-6b87-4ce2-900c-2e2c5ebfc125" />
+</p>
 
 ## To-Do
 - [ ] https://github.com/12th-devs/Advanced-Tab-Groups/issues/111
