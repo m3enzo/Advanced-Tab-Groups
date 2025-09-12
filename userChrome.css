@@ -2,99 +2,109 @@
 /* https://github.com/Anoms12/Advanced-Tab-Groups */
 /* ====== v3.0.0b ====== */
 tab-group:not([split-view-group]) {
-    --advanced-tab-color: var(--tab-group-color);
-    --tab-group-color-pale: transparent !important;
-  
-    .tab-group-label-container {
-      height: 36px !important;
-      margin: 0 !important;
-      padding: 0 10px 0 0 !important;
-      border-radius: var(--border-radius-medium) !important;
-      display: flex !important;
-      align-items: center !important;
-  
-      .tab-group-icon-container {
-        margin: 0 6px 0 10px;
-        .tab-group-icon {
-          display: flex !important;
-          justify-content: center !important;
-          align-items: center !important;
-          background: var(--advanced-tab-color);
-          min-width: 16px !important;
-          width: 16px;
-          height: 16px;
-          border-radius: 4px;
-          position: relative;
-  
-          &:hover {
-            .stash-icon {
-              appearance: none;
-              -moz-context-properties: fill, fill-opacity;
-              /*list-style-image: url(chrome://browser/skin/zen-icons/arrow-down.svg) !important; */
-              border-radius: 4px;
-              color: inherit;
-              fill: currentColor;
-              padding: 1px;
-              width: 16px;
-              height: auto;
-              outline: var(--toolbarbutton-outline);
-            }
+  --advanced-tab-color: var(--tab-group-color);
+  --tab-group-color-pale: transparent !important;
+
+  .tab-group-label-container {
+    contain: inline-size !important;
+    height: 36px !important;
+    margin: 0 !important;
+    padding: 0 10px 0 0 !important;
+    border-radius: var(--border-radius-medium) !important;
+    display: flex !important;
+    align-items: center !important;
+
+    .tab-group-icon-container {
+      margin: 0 6px 0 10px;
+      .tab-group-icon {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        background: var(--advanced-tab-color);
+        min-width: 16px !important;
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+        position: relative;
+
+        &:hover {
+          .stash-icon {
+            appearance: none;
+            -moz-context-properties: fill, fill-opacity;
+            /*list-style-image: url(chrome://browser/skin/zen-icons/arrow-down.svg) !important; */
+            border-radius: 4px;
+            color: inherit;
+            fill: currentColor;
+            padding: 1px;
+            width: 16px;
+            height: auto;
+            outline: var(--toolbarbutton-outline);
           }
         }
       }
-  
-      .tab-group-label {
-        align-self: auto !important;
-        margin-right: auto !important;
-        width: 100%;
-        background: transparent !important;
-        color: var(--tab-selected-textcolor) !important;
-        font-weight: 500 !important;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 5px;
-      }
-  
-      &:hover {
-        background-color: var(--tab-hover-background-color) !important;
-        .tab-close-button {
-          -moz-window-dragging: no-drag !important;
-          visibility: visible !important;
-        }
-      }
     }
-  
-    .tab-group-container {
-      max-height: 100% !important;
-      position: relative;
-      margin-left: 12px !important;
-  
-      &::after {
-        content: "";
-        position: absolute;
-        left: -2px !important;
-        top: 0;
-        background: var(--advanced-tab-color);
-        height: 100%;
-        width: 2px;
-        pointer-events: none !important;
+
+    .tab-group-label {
+      direction: ltr !important;
+      mask-image: linear-gradient(to left, transparent, black 1em) !important;
+      margin-right: auto !important;
+      width: 100%;
+      background: transparent !important;
+      color: var(--toolbox-textcolor) !important;
+      &:-moz-window-inactive {
+        color: var(--toolbox-textcolor-inactive);
       }
-  
-      tab {
-        max-height: 40px;
-        opacity: 1;
-        overflow: hidden;
-        transition: max-height 0.10s ease, opacity 0.10s ease !important;
-      }
+      font-weight: 500 !important;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 5px;
     }
-  
-    &[collapsed=""] {
-      .tab-group-container {
-        tab:not([selected]) {
-          max-height: 0 !important;
-          opacity: 0 !important;
-        }
+      
+      .tab-close-button {
+          display: none;
+      }
+
+    &:hover {
+      background-color: var(--tab-hover-background-color) !important;
+      .tab-close-button {
+        -moz-window-dragging: no-drag !important;
+        visibility: visible !important;
+          display: flex;
       }
     }
   }
+
+  .tab-group-container {
+    max-height: 100% !important;
+    position: relative;
+    margin-left: 12px !important;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -2px !important;
+      top: 0;
+      background: var(--advanced-tab-color);
+      height: 100%;
+      width: 2px;
+      pointer-events: none !important;
+    }
+
+    tab {
+      max-height: 40px;
+      opacity: 1;
+      overflow: hidden;
+      transition: max-height 0.10s ease, opacity 0.10s ease !important;
+    }
+  }
+
+  &[collapsed=""] {
+    .tab-group-container {
+      tab:not([selected]) {
+        max-height: 0 !important;
+        opacity: 0 !important;
+      }
+    }
+  }
+}
