@@ -10,7 +10,7 @@
     "property": "tab.groups.display-tab-range",
     "type": "checkbox",
     "label": "Add a line showing where the tab group starts and stops.",
-    "default": "false",
+    "default": "true",
     "conditions": [
       {
         "if": {
