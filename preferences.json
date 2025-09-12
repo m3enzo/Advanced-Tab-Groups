@@ -2,29 +2,70 @@
   {
     "property": "browser.tabs.groups.enabled",
     "type": "checkbox",
-    "label": "Enables Tab Groups in the Zen Browser.",
+    "label": "Enable Tab Groups in the Zen Browser.",
     "default": "true",
     "force": "true"
   },
   {
-    "property": "tab.groups.background",
-    "type": "checkbox",
-    "label": "Use tab group colors."
-  },
-  {
     "property": "tab.groups.display-tab-range",
     "type": "checkbox",
-    "label": "Adds a line showing where the tab group starts and stops."
+    "label": "Add a line showing where the tab group starts and stops.",
+    "default": "false",
+    "conditions": [
+      {
+        "if": {
+          "property": "tab.groups.arc-style",
+          "value": false
+        }
+      }
+    ]
   },
   {
     "property": "tab.groups.add-arrow",
     "type": "checkbox",
-    "label": "Use an arrow icon for tab groups.",
-    "default": "true"
+    "label": "Add an arrow icon for tab groups.",
+    "default": "true",
+    "conditions": [
+      {
+        "if": {
+          "property": "tab.groups.arc-style",
+          "value": false
+        }
+      }
+    ]
   },
   {
-    "property": "tab.groups.use-firefox-colors",
+    "type": "separator",
+    "label": "Bonus feature"
+  },
+  {
+    "type": "text",
+    "label": "EITHER …",
+    "margin": "var(--space-medium) 0R var(--space-medium) 22px"
+  },
+  {
+    "property": "tab.groups.arc-style",
     "type": "checkbox",
-    "label": "Use the default Firefox Colors instead of Zen Colors"
+    "label": "Apply Arc-like group styling"
+  },
+  {
+    "type": "text",
+    "label": "… OR",
+    "margin": "var(--space-large ) 0R var(--space-medium) 22px"
+  },
+  {
+    "property": "tab.groups.edge-style",
+    "type": "checkbox",
+    "label": "Apply Edge-like group styling"
+  },
+  {
+    "type": "separator",
+    "label": "@12th 😉 (mock-up)"
+  },
+  {
+    "property": "tab.groups.stash-icon",
+    "type": "checkbox",
+    "label": "Show stash icon on hover.",
+    "default": "false"
   }
 ]
