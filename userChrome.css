@@ -51,6 +51,8 @@ tab-group:not([split-view-group]) {
     .tab-group-label {
       margin-right: auto !important;
       width: 100%;
+      height: 100% !important;
+      text-align: start !important;
       background: transparent !important;
       color: var(--tab-selected-textcolor) !important;
       &:-moz-window-inactive {
@@ -62,6 +64,7 @@ tab-group:not([split-view-group]) {
       display: flex;
       flex-direction: row;
       align-items: center;
+      padding: 0 4px 0 4px !important;
       gap: 5px;
     }
 
