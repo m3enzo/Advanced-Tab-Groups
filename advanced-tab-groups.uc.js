@@ -154,7 +154,7 @@ class AdvancedTabGroupsCloseButton {
     labelElement.style.display = 'none';
     const input = document.createElement('input');
     input.id = 'tab-label-input';
-    input.className = 'tab-group-label';
+    input.class = 'tab-group-label';
     input.type = 'text';
     input.value = group.label || labelElement.textContent || '';
     input.setAttribute('autocomplete', 'off');
