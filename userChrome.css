@@ -193,26 +193,32 @@ tab-group:not([split-view-group]) {
 
 /* Edge-like group styling */
 @media (-moz-bool-pref: "browser.tabs.groups.edge-style") and (not (-moz-bool-pref: "browser.tabs.groups.arc-style")) {
+
   tab-group:not([split-view-group]) {
+
     .tab-group-label-container {
       display: grid !important;
       grid-template-areas: "icon label stash close";
       grid-template-columns: auto auto 1fr auto;
+      height: 26px !important;
+      margin-block: 8px 4px !important;
 
-      .tab-close-button {
+      .tab-close-button,
+      .group-stash-button {
         justify-self: end;
         color: unset;
+
       }
 
       &:hover {
         background-color: transparent !important;
 
-        .tab-close-button {
-        }
+        .tab-close-button {}
       }
 
       /* first column, area "icon" */
       .tab-group-icon-container {
+
         grid-area: icon;
         margin-inline-end: 0 !important;
 
@@ -224,39 +230,51 @@ tab-group:not([split-view-group]) {
           height: 20px;
           rotate: 45deg;
           transition: none;
-          translate: 0 0.15em;
+          translate: 0 .15em;
 
-          &:hover {
+          /* dirty :( */
+          @media (prefers-color-scheme: light) {
+            filter: invert(1);
           }
+
+          &:hover {}
         }
       }
 
       .tab-group-icon {
         background-color: transparent;
-        color: var(--color-gray-100);
       }
 
       .tab-group-label {
+
         grid-area: label;
-        color: var(--color-gray-100) !important;
+        max-width: none !important;
+
+        @media (prefers-color-scheme: dark) {
+          color: var(--color-gray-100) !important;
+        }
 
         &::after {
           content: "";
           position: absolute;
-          background: var(--advanced-tab-color) !important;
+          inset: 0;
+          background-color: var(--advanced-tab-color);
           visibility: visible;
           grid-area: label;
           width: 100%;
-          height: 30px !important;
+          height: 100% !important;
           z-index: -1;
-          border-radius: 0.5em;
+          border-radius: .75em;
+          margin-inline-start: -24px;
+          padding-inline-start: 36px;
         }
       }
     }
 
     .tab-group-container {
+
       &::after {
-        left: -4px !important;
+        left: -8px !important;
         top: 0;
         background: var(--advanced-tab-color);
         /*height: 100%;*/
@@ -264,9 +282,9 @@ tab-group:not([split-view-group]) {
         border-radius: 2px;
       }
 
-      tab {
-      }
+      tab {}
     }
+
 
     &[collapsed] {
       .tab-group-label-container {
@@ -279,60 +297,8 @@ tab-group:not([split-view-group]) {
       }
 
       .tab-group-container {
-        tab:not([selected]) {
-        }
+        tab:not([selected]) {}
       }
     }
   }
 }
-
-/*=====================================================
-  Reusable selector template for further browser styles
-======================================================*/
-/*
-tab-group:not([split-view-group]) {
-
-  .tab-close-button {}
-
-  .tab-group-label-container {
-
-    &:hover {
-
-      .tab-close-button {}
-    }
-
-    .tab-group-icon-container {
-
-      .group-marker {
-        list-style-image: url(chrome://browser/skin/zen-icons/arrow-right.svg) !important;
-
-        &:hover {}
-      }
-    }
-
-    .tab-group-icon {}
-
-    .tab-group-label {}
-  }
-
-  .tab-group-container {
-
-    &::after {}
-
-    tab {}
-  }
-
-
-  &[collapsed] {
-    .tab-group-label-container {
-      .tab-group-icon {
-        .group-marker {}
-      }
-    }
-
-    .tab-group-container {
-      tab:not([selected]) {}
-    }
-  }
-}
-*/
