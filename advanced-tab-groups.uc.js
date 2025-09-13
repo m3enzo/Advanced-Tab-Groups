@@ -224,7 +224,6 @@ class AdvancedTabGroupsCloseButton {
       <div class="tab-group-icon-container">
         <div class="tab-group-icon">
           <image class="group-marker" role="button" keyNav="false" tooltiptext="Toggle Group"/>
-          
         </div>
       </div>
       <image class="group-stash-button stash-icon" role="button" keyNav="false" tooltiptext="Stash Group"/>
