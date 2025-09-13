@@ -115,7 +115,7 @@ tab-group:not([split-view-group]) {
       max-height: 40px;
       opacity: 1;
       overflow: hidden;
-      transition: max-height 0.25s ease, opacity 0.25s ease !important;
+      transition: scale 0.07s ease, var(--zen-tabbox-element-indent-transition), min-width 100ms ease-out, max-width 100ms ease-out, max-height 0.10s ease, opacity 0.10s ease !important;
     }
   }
 
