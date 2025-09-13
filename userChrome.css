@@ -16,6 +16,7 @@ tab-group:not([split-view-group]) {
     .tab-group-icon-container {
       margin: 0 6px 0 10px;
       .tab-group-icon {
+        list-style-image: none !important;
         display: flex;
         justify-content: center !important;
         align-items: center !important;
