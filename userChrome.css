@@ -5,10 +5,6 @@ tab-group:not([split-view-group]) {
   --advanced-tab-color: var(--tab-group-color);
   --tab-group-color-pale: transparent !important;
 
-  &:-moz-window-inactive {
-    color: var(--toolbox-textcolor-inactive);
-  }
-
   .tab-group-label-container {
     height: 36px !important;
     margin: 0 !important;
@@ -38,6 +34,7 @@ tab-group:not([split-view-group]) {
       .tab-close-button {
         -moz-window-dragging: no-drag !important;
         visibility: visible !important;
+        display: flex;
       }
     }
 
@@ -82,6 +79,11 @@ tab-group:not([split-view-group]) {
       width: 100%;
       background: transparent !important;
       color: var(--tab-selected-textcolor) !important;
+
+      &:-moz-window-inactive {
+        color: var(--toolbox-textcolor-inactive) !important;
+      }
+
       font-weight: 600 !important;
       display: flex;
       flex-direction: row;
@@ -95,24 +97,22 @@ tab-group:not([split-view-group]) {
     position: relative;
     margin-inline-start: 12px !important;
 
-    @media (-moz-bool-pref: "browser.tabs.groups.display-tab-range") {
-      &::after {
-        content: "";
-        position: absolute;
-        left: -2px !important;
-        top: 0;
-        background: var(--advanced-tab-color);
-        height: 100%;
-        width: 2px;
-        pointer-events: none !important;
-      }
+    &::after {
+      content: "";
+      position: absolute;
+      left: -2px !important;
+      top: 0;
+      background: var(--advanced-tab-color);
+      height: 100%;
+      width: 2px;
+      pointer-events: none !important;
     }
 
     tab {
       max-height: 40px;
       opacity: 1;
       overflow: hidden;
-      transition: max-height 0.25s ease, opacity 0.25s ease !important;
+      transition: scale 0.07s ease, var(--zen-tabbox-element-indent-transition), min-width 100ms ease-out, max-width 100ms ease-out, max-height 0.10s ease, opacity 0.10s ease !important;
     }
   }
 
@@ -276,21 +276,6 @@ tab-group:not([split-view-group]) {
         align-self: center !important;
         width: -moz-available;
         text-align: start;
-
-        &::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background-color: var(--advanced-tab-color);
-          visibility: visible;
-          grid-area: label;
-          width: 100%;
-          height: 100% !important;
-          z-index: -1;
-          border-radius: .75em;
-          margin-inline-start: -24px;
-          padding-inline-start: 36px;
-        }
       }
     }
 
