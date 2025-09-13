@@ -7,6 +7,20 @@
     "force": "true"
   },
   {
+    "property": "browser.tabs.groups.display-tab-range",
+    "type": "checkbox",
+    "label": "Add a line showing where the tab group starts and stops.",
+    "default": "true",
+    "conditions": [
+      {
+        "if": {
+          "property": "browser.tabs.groups.arc-style",
+          "value": false
+        }
+      }
+    ]
+  },
+  {
     "property": "browser.tabs.groups.add-arrow",
     "type": "checkbox",
     "label": "Add an arrow icon for tab groups.",
@@ -25,8 +39,33 @@
     "label": "Bonus feature"
   },
   {
+    "type": "text",
+    "label": "EITHER …",
+    "margin": "var(--space-medium) 0R var(--space-medium) 22px"
+  },
+  {
     "property": "browser.tabs.groups.arc-style",
     "type": "checkbox",
     "label": "Apply Arc-like group styling"
+  },
+  {
+    "type": "text",
+    "label": "… OR",
+    "margin": "var(--space-large ) 0R var(--space-medium) 22px"
+  },
+  {
+    "property": "browser.tabs.groups.edge-style",
+    "type": "checkbox",
+    "label": "Apply Edge-like group styling"
+  },
+  {
+    "type": "separator",
+    "label": "@12th 😉 (mock-up)"
+  },
+  {
+    "property": "browser.tabs.groups.stash-icon",
+    "type": "checkbox",
+    "label": "Show stash icon on hover.",
+    "default": "false"
   }
 ]
