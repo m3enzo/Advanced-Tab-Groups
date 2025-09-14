@@ -9,12 +9,12 @@ Tab groups for Zen Browser
 
 ## To-Do
 - [ ] https://github.com/12th-devs/Advanced-Tab-Groups/issues/111
-- [ ] Add Arc & Edge Styles
+- [x] Add Arc & Edge Styles
 - [ ] Allow folder to group conversion (@JustaDumbPrsn)
 - [ ] Move color saving logic to session storage instead of JSON file
 - [ ] Fix odd scrolling glitches
-- [ ] Add the font fade overflow effect
-- [ ] Fix renaming glitches
+- [x] Add the font fade overflow effect
+- [x] Fix renaming glitches
 - [ ] Add icon support
 - [ ] Improve animations (mainly for the line, it does not get animated when you add a tab)
 - [ ] Add the stashing feature (soon™)
