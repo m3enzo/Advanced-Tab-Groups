@@ -10,7 +10,7 @@ Tab groups for Zen Browser
 ## To-Do
 - [ ] https://github.com/12th-devs/Advanced-Tab-Groups/issues/111
 - [x] Add Arc & Edge Styles
-- [ ] Allow folder to group conversion (@JustaDumbPrsn)
+- [x] Allow folder to group conversion (@JustaDumbPrsn)
 - [ ] Move color saving logic to session storage instead of JSON file
 - [ ] Fix odd scrolling glitches
 - [x] Add the font fade overflow effect
