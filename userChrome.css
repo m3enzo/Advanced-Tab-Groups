@@ -4,6 +4,10 @@
 tab-group:not([split-view-group]) {
   --advanced-tab-color: var(--tab-group-color);
   --tab-group-color-pale: transparent !important;
+    --tab-group-stroke: light-dark(
+    color-mix(in srgb, var(--zen-primary-color) 60%, black),
+    color-mix(in srgb, var(--zen-colors-primary) 20%, var(--toolbox-textcolor)));
+  
 
   .tab-group-label-container {
     height: 36px !important;
@@ -44,26 +48,6 @@ tab-group:not([split-view-group]) {
 
     .tab-group-icon-container {
       margin: 0 6px 0 10px;
-
-      @media (-moz-bool-pref: "browser.tabs.groups.add-arrow") {
-        .group-marker {
-          appearance: none;
-          -moz-context-properties: fill, fill-opacity;
-          list-style-image: url(chrome://browser/skin/zen-icons/arrow-right.svg) !important;
-          border-radius: 4px;
-          color: inherit;
-          fill: currentColor;
-          padding: 1px;
-          width: 16px;
-          height: auto;
-          rotate: 90deg;
-          transition: rotate 0.25s ease-out;
-
-          &:hover {
-            outline: var(--toolbarbutton-outline);
-          }
-        }
-      }
     }
 
     .tab-group-icon {
@@ -71,14 +55,26 @@ tab-group:not([split-view-group]) {
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
-      @media not (-moz-bool-pref: "browser.tabs.groups.edge-style") {
-        background: var(--advanced-tab-color);
-      }
-      min-width: 16px !important;
       width: 16px;
       height: 16px;
       border-radius: 4px;
       position: relative;
+      fill: var(--tab-group-stroke) !important;
+      background: var(--advanced-tab-color);
+      &[zen-emoji-open='true']::before {
+        border: 1px dashed light-dark(rgba(0, 0, 0, .5), rgba(255, 255, 255, .5));
+        border-radius: 6px;
+        width: 18px;
+        height: 18px;
+        content: '';
+        position: absolute;
+        pointer-events: none;
+      }
+      .group-icon {
+        width: 16px;
+        height: 16px;
+        display: block;
+      }
     }
 
     .tab-group-label {
@@ -95,7 +91,7 @@ tab-group:not([split-view-group]) {
         color: var(--toolbox-textcolor-inactive) !important;
       }
 
-      font-weight: 400 !important;
+      font-weight: 200 !important;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -130,16 +126,6 @@ tab-group:not([split-view-group]) {
   }
 
   &[collapsed] {
-    .tab-group-label-container {
-      .tab-group-icon {
-        @media (-moz-bool-pref: "browser.tabs.groups.add-arrow") {
-          .group-marker {
-            rotate: 0deg;
-          }
-        }
-      }
-    }
-
     .tab-group-container {
       tab:not([selected]) {
         max-height: 0 !important;
@@ -150,15 +136,29 @@ tab-group:not([split-view-group]) {
 }
 
 /* Arc-like group styling */
-@media (-moz-bool-pref: "browser.tabs.groups.arc-style") and (not (-moz-bool-pref: "browser.tabs.groups.edge-style")) {
+@media (-moz-bool-pref: "browser.tabs.groups.arc-style") {
   tab-group:not([split-view-group]) {
     .tab-group-label-container {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
       &:hover {
         background-color: transparent !important;
       }
-
+      
       .tab-group-icon {
         display: none !important;
+        background: none !important;
+        &:has(.group-icon) {
+          display: flex !important;
+        }
+        &[zen-emoji-open='true'] {
+          display: flex !important;
+        }
+        & .group-icon {
+          width: 22px !important;
+          height: 22px !important;
+        }
       }
 
       .tab-group-label {

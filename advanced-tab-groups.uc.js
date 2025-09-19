@@ -16,6 +16,9 @@ class AdvancedTabGroupsCloseButton {
     // Load saved tab group colors
     this.loadSavedColors();
 
+    // Load saved tab group icons
+    this.loadGroupIcons();
+
     this.setupStash();
 
     // Set up observer for all tab groups
@@ -225,9 +228,8 @@ class AdvancedTabGroupsCloseButton {
     // Create and inject the icon container and close button together for readability
     const groupDomFrag = window.MozXULElement.parseXULToFragment(`
       <div class="tab-group-icon-container">
-        <div class="tab-group-icon">
-          <image class="group-marker" role="button" keyNav="false" tooltiptext="Toggle Group"/>
-        </div>
+        <div class="tab-group-icon"></div>
+        <image class="group-marker" role="button" keyNav="false" tooltiptext="Toggle Group"/>
       </div>
       <image class="group-stash-button stash-icon" role="button" keyNav="false" tooltiptext="Stash Group"/>
       <image class="tab-close-button close-icon" role="button" keyNav="false" tooltiptext="Close Group"/>
@@ -258,8 +260,9 @@ class AdvancedTabGroupsCloseButton {
       );
 
       try {
-        // Remove the group's saved color before removing the group
+        // Remove the group's saved color and icon before removing the group
         this.removeSavedColor(group.id);
+        this.removeSavedIcon(group.id);
 
         gBrowser.removeTabGroup(group);
         console.log(
@@ -308,6 +311,7 @@ class AdvancedTabGroupsCloseButton {
           </menupopup>
         </menu>
         <menuitem class="rename-group" label="Rename Group"/>
+        <menuitem class="change-group-icon" label="Change Group Icon"/>
         <menuseparator/>
         <menuitem class="ungroup-tabs" label="Ungroup Tabs"/>
         <menuitem class="convert-group-to-folder" 
@@ -324,6 +328,7 @@ class AdvancedTabGroupsCloseButton {
     const setGroupColorItem = contextMenu.querySelector(".set-group-color");
     const useFaviconColorItem = contextMenu.querySelector(".use-favicon-color");
     const renameGroupItem = contextMenu.querySelector(".rename-group");
+    const changeGroupIconItem = contextMenu.querySelector(".change-group-icon");
     const ungroupTabsItem = contextMenu.querySelector(".ungroup-tabs");
     const convertToFolderItem = contextMenu.querySelector(
       ".convert-group-to-folder"
@@ -351,6 +356,13 @@ class AdvancedTabGroupsCloseButton {
       renameGroupItem.addEventListener("command", () => {
         const group = this._contextMenuCurrentGroup;
         if (group) this.renameGroupStart(group);
+      });
+    }
+
+    if (changeGroupIconItem) {
+      changeGroupIconItem.addEventListener("command", () => {
+        const group = this._contextMenuCurrentGroup;
+        if (group) this.changeGroupIcon(group);
       });
     }
 
@@ -488,6 +500,10 @@ class AdvancedTabGroupsCloseButton {
 
     group._closeGroupFromContextMenu = () => {
       try {
+        // Remove the group's saved color and icon before removing the group
+        this.removeSavedColor(group.id);
+        this.removeSavedIcon(group.id);
+
         gBrowser.removeTabGroup(group);
         console.log(
           "[AdvancedTabGroups] Group closed via context menu:",
@@ -903,6 +919,10 @@ class AdvancedTabGroupsCloseButton {
       }
     };
 
+    group._changeGroupIcon = () => {
+      this.changeGroupIcon(group);
+    };
+
     group._useFaviconColor = () => {
       console.log(
         "[AdvancedTabGroups] Use Average Favicon Color clicked for group:",
@@ -1192,8 +1212,9 @@ class AdvancedTabGroupsCloseButton {
           );
         }
 
-        // Remove the saved color for the original group
+        // Remove the saved color and icon for the original group
         this.removeSavedColor(group.id);
+        this.removeSavedIcon(group.id);
 
         console.log(
           "[AdvancedTabGroups] Group successfully converted to folder"
@@ -1259,6 +1280,69 @@ class AdvancedTabGroupsCloseButton {
 
     } catch (error) {
       console.error("[AdvancedTabGroups] Error converting folder to group:", error);
+    }
+  }
+
+  // Change group icon using the Zen emoji picker (SVG icons only)
+  async changeGroupIcon(group) {
+    console.log("[AdvancedTabGroups] Change Group Icon clicked for group:", group.id);
+
+    try {
+      // Check if the Zen emoji picker is available
+      if (!window.gZenEmojiPicker) {
+        console.error("[AdvancedTabGroups] Zen emoji picker not available");
+        return;
+      }
+
+      // Find the icon container in the group
+      const iconContainer = group.querySelector('.tab-group-icon-container');
+      if (!iconContainer) {
+        console.error("[AdvancedTabGroups] Icon container not found for group:", group.id);
+        return;
+      }
+
+      // Find the icon element (create if it doesn't exist)
+      let iconElement = iconContainer.querySelector('.tab-group-icon');
+      if (!iconElement) {
+        iconElement = document.createElement('div');
+        iconElement.className = 'tab-group-icon';
+        iconContainer.appendChild(iconElement);
+      }
+
+      // Open the emoji picker with SVG icons only
+      const selectedIcon = await window.gZenEmojiPicker.open(iconElement, { onlySvgIcons: true });
+      
+      if (selectedIcon) {
+        console.log("[AdvancedTabGroups] Selected icon:", selectedIcon);
+        
+        // Clear any existing icon content
+        iconElement.innerHTML = '';
+        
+        // Create an image element for the SVG icon using parsed XUL
+        const imgFrag = window.MozXULElement.parseXULToFragment(`
+          <image src="${selectedIcon}" class="group-icon" alt="Group Icon"/>
+        `);
+        iconElement.appendChild(imgFrag.firstElementChild);
+        
+        // Save the icon to persistent storage
+        this.saveGroupIcon(group.id, selectedIcon);
+        
+        console.log("[AdvancedTabGroups] Icon applied to group:", group.id);
+      } else if (selectedIcon === null) {
+        console.log("[AdvancedTabGroups] Icon removal requested");
+        
+        // Clear the icon content
+        iconElement.innerHTML = '';
+        
+        // Remove the icon from persistent storage
+        this.removeSavedIcon(group.id);
+        
+        console.log("[AdvancedTabGroups] Icon removed from group:", group.id);
+      } else {
+        console.log("[AdvancedTabGroups] No icon selected");
+      }
+    } catch (error) {
+      console.error("[AdvancedTabGroups] Error changing group icon:", error);
     }
   }
 
@@ -1570,6 +1654,141 @@ class AdvancedTabGroupsCloseButton {
       }
     } catch (error) {
       console.error("[AdvancedTabGroups] Error removing saved color:", error);
+    }
+  }
+
+  // Save group icon to persistent storage
+  async saveGroupIcon(groupId, iconUrl) {
+    try {
+      if (typeof UC_API !== "undefined" && UC_API.FileSystem) {
+        // Read current icons
+        let icons = {};
+        try {
+          const fsResult = await UC_API.FileSystem.readFile("tab_group_icons.json");
+          if (fsResult.isContent()) {
+            icons = JSON.parse(fsResult.content());
+          }
+        } catch (fileError) {
+          console.log("[AdvancedTabGroups] No saved icon file found, creating new one");
+        }
+
+        // Update with new icon
+        icons[groupId] = iconUrl;
+
+        // Save to file
+        const jsonData = JSON.stringify(icons, null, 2);
+        await UC_API.FileSystem.writeFile("tab_group_icons.json", jsonData);
+        console.log("[AdvancedTabGroups] Group icon saved:", groupId, iconUrl);
+      } else {
+        // Fallback to localStorage
+        const savedIcons = localStorage.getItem("advancedTabGroups_icons");
+        let icons = savedIcons ? JSON.parse(savedIcons) : {};
+        icons[groupId] = iconUrl;
+        localStorage.setItem("advancedTabGroups_icons", JSON.stringify(icons));
+        console.log("[AdvancedTabGroups] Group icon saved to localStorage:", groupId, iconUrl);
+      }
+    } catch (error) {
+      console.error("[AdvancedTabGroups] Error saving group icon:", error);
+    }
+  }
+
+  // Load saved group icons from persistent storage
+  async loadGroupIcons() {
+    try {
+      let icons = {};
+
+      if (typeof UC_API !== "undefined" && UC_API.FileSystem) {
+        try {
+          const fsResult = await UC_API.FileSystem.readFile("tab_group_icons.json");
+          if (fsResult.isContent()) {
+            icons = JSON.parse(fsResult.content());
+            console.log("[AdvancedTabGroups] Loaded icons from file:", icons);
+          }
+        } catch (fileError) {
+          console.log("[AdvancedTabGroups] No saved icon file found");
+        }
+      } else {
+        // Fallback to localStorage
+        const savedIcons = localStorage.getItem("advancedTabGroups_icons");
+        if (savedIcons) {
+          icons = JSON.parse(savedIcons);
+          console.log("[AdvancedTabGroups] Loaded icons from localStorage:", icons);
+        }
+      }
+
+      // Apply icons to existing groups
+      if (Object.keys(icons).length > 0) {
+        setTimeout(() => {
+          this.applySavedIcons(icons);
+        }, 500); // Small delay to ensure groups are fully loaded
+      }
+    } catch (error) {
+      console.error("[AdvancedTabGroups] Error loading saved icons:", error);
+    }
+  }
+
+  // Apply saved icons to tab groups
+  applySavedIcons(icons) {
+    try {
+      Object.entries(icons).forEach(([groupId, iconUrl]) => {
+        const group = document.getElementById(groupId);
+        if (group && !group.hasAttribute("split-view-group")) {
+          const iconContainer = group.querySelector('.tab-group-icon-container');
+          if (iconContainer) {
+            let iconElement = iconContainer.querySelector('.tab-group-icon');
+            if (!iconElement) {
+              iconElement = document.createElement('div');
+              iconElement.className = 'tab-group-icon';
+              iconContainer.appendChild(iconElement);
+            }
+
+            // Clear any existing content and add the icon
+            iconElement.innerHTML = '';
+            const imgFrag = window.MozXULElement.parseXULToFragment(`
+              <image src="${iconUrl}" class="group-icon" alt="Group Icon"/>
+            `);
+            iconElement.appendChild(imgFrag.firstElementChild);
+
+            console.log("[AdvancedTabGroups] Applied saved icon to group:", groupId, iconUrl);
+          }
+        }
+      });
+    } catch (error) {
+      console.error("[AdvancedTabGroups] Error applying saved icons:", error);
+    }
+  }
+
+  // Remove saved icon for a specific tab group
+  async removeSavedIcon(groupId) {
+    try {
+      if (typeof UC_API !== "undefined" && UC_API.FileSystem) {
+        try {
+          // Read current icons
+          const fsResult = await UC_API.FileSystem.readFile("tab_group_icons.json");
+          if (fsResult.isContent()) {
+            const icons = JSON.parse(fsResult.content());
+            delete icons[groupId];
+
+            // Save updated icons
+            const jsonData = JSON.stringify(icons, null, 2);
+            await UC_API.FileSystem.writeFile("tab_group_icons.json", jsonData);
+            console.log("[AdvancedTabGroups] Removed saved icon for group:", groupId);
+          }
+        } catch (fileError) {
+          console.log("[AdvancedTabGroups] No saved icon file found to remove from");
+        }
+      } else {
+        // Fallback to localStorage
+        const savedIcons = localStorage.getItem("advancedTabGroups_icons");
+        if (savedIcons) {
+          const icons = JSON.parse(savedIcons);
+          delete icons[groupId];
+          localStorage.setItem("advancedTabGroups_icons", JSON.stringify(icons));
+          console.log("[AdvancedTabGroups] Removed saved icon for group:", groupId);
+        }
+      }
+    } catch (error) {
+      console.error("[AdvancedTabGroups] Error removing saved icon:", error);
     }
   }
   setupStash() {
