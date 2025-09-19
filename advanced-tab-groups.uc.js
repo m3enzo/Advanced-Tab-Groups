@@ -387,13 +387,12 @@ class AdvancedTabGroupsCloseButton {
     // Use a timeout to ensure the menu exists, as it's created by another component
     setTimeout(() => {
       const folderMenu = document.getElementById("zenFolderActions");
-      if (!folderMenu || folderMenu.querySelector("#atg-convert-folder-to-group")) {
+      if (!folderMenu || folderMenu.querySelector("#convert-folder-to-group")) {
         return; // Already exists or menu not found
       }
 
       const menuFragment = window.MozXULElement.parseXULToFragment(`
-        <menuseparator id="atg-folder-separator"/>
-        <menuitem id="atg-convert-folder-to-group" label="Convert Folder to Group"/>
+        <menuitem id="convert-folder-to-group" label="Convert Folder to Group"/>
       `);
 
       const convertToSpaceItem = folderMenu.querySelector("#context_zenFolderToSpace");
@@ -405,7 +404,7 @@ class AdvancedTabGroupsCloseButton {
       }
 
       folderMenu.addEventListener('command', (event) => {
-        if (event.target.id === 'atg-convert-folder-to-group') {
+        if (event.target.id === 'convert-folder-to-group') {
           const triggerNode = folderMenu.triggerNode;
           if (!triggerNode) {
             console.error("[AdvancedTabGroups] Could not find trigger node for folder context menu.");
