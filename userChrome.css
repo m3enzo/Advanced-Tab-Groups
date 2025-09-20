@@ -92,6 +92,7 @@ tab-group:not([split-view-group]) {
       }
 
       font-weight: 200 !important;
+      text-align: start !important;
       display: flex;
       flex-direction: row;
       align-items: center;
