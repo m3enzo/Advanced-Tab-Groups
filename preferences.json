@@ -7,20 +7,6 @@
     "force": "true"
   },
   {
-    "property": "browser.tabs.groups.add-arrow",
-    "type": "checkbox",
-    "label": "Add an arrow icon for tab groups.",
-    "default": "true",
-    "conditions": [
-      {
-        "if": {
-          "property": "browser.tabs.groups.arc-style",
-          "value": false
-        }
-      }
-    ]
-  },
-  {
     "type": "separator",
     "label": "Other Styles"
   },
