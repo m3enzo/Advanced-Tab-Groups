@@ -4,10 +4,10 @@
 tab-group:not([split-view-group]) {
   --advanced-tab-color: var(--tab-group-color);
   --tab-group-color-pale: transparent !important;
-  --tab-group-stroke: light-dark(
+    --tab-group-stroke: light-dark(
     color-mix(in srgb, var(--zen-primary-color) 60%, black),
-    color-mix(in srgb, var(--zen-colors-primary) 20%, var(--toolbox-textcolor))
-  );
+    color-mix(in srgb, var(--zen-colors-primary) 20%, var(--toolbox-textcolor)));
+  
 
   .tab-group-label-container {
     height: 36px !important;
@@ -63,13 +63,12 @@ tab-group:not([split-view-group]) {
       position: relative;
       fill: var(--tab-group-stroke) !important;
       background: var(--advanced-tab-color);
-      &[zen-emoji-open="true"]::before {
-        border: 1px dashed
-          light-dark(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5));
+      &[zen-emoji-open='true']::before {
+        border: 1px dashed light-dark(rgba(0, 0, 0, .5), rgba(255, 255, 255, .5));
         border-radius: 6px;
         width: 18px;
         height: 18px;
-        content: "";
+        content: '';
         position: absolute;
         pointer-events: none;
       }
@@ -141,6 +140,14 @@ tab-group:not([split-view-group]) {
 
 /* Arc-like group styling */
 @media (-moz-bool-pref: "browser.tabs.groups.arc-style") {
+  /* Hide the color context menu options */
+  #advanced-tab-groups-context-menu {
+    .change-group-color {
+      display: none !important;
+    }
+  }
+  
+  
   tab-group:not([split-view-group]) {
     .tab-group-label-container {
       height: 30px !important;
@@ -148,27 +155,27 @@ tab-group:not([split-view-group]) {
       &:hover {
         background-color: transparent !important;
       }
-
+      
       .tab-group-icon-container {
         margin: 0 0 0 10px !important;
-        display: none !important;
+          display: none !important;
         .tab-group-icon {
           background: none !important;
         }
-        &:has(.group-icon) {
-          display: flex !important;
-        }
-        &:has(.tab-group-icon[zen-emoji-open="true"]) {
-          display: flex !important;
-        }
-        & .group-icon {
-          width: 22px !important;
-          height: 22px !important;
-        }
+          &:has(.group-icon) {
+            display: flex !important;
+          }
+          &:has(.tab-group-icon[zen-emoji-open='true']) {
+            display: flex !important;
+          }
+          & .group-icon {
+            width: 22px !important;
+            height: 22px !important;
+          }
       }
 
       .tab-group-label {
-        font-weight: 400 !important;
+        font-weight: 600 !important;
         padding-inline: 0 var(--space-medium) !important;
         margin-left: 10px !important;
 
@@ -180,8 +187,7 @@ tab-group:not([split-view-group]) {
       }
 
       .tab-close-button {
-        display: flex !important;
-        opacity: 0.75;
+        display: none !important;
       }
     }
 
