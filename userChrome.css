@@ -169,8 +169,8 @@ tab-group:not([split-view-group]) {
             display: flex !important;
           }
           & .group-icon {
-            width: 22px !important;
-            height: 22px !important;
+            width: 14px !important;
+            height: 14px !important;
           }
       }
 
