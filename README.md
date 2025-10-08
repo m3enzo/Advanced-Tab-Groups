@@ -26,6 +26,6 @@ Thanks to [BibekBhusal0](https://github.com/BibekBhusal0) for fixing various iss
 
 Thanks to [Wacky-Wombat](https://github.com/Wacky-Wombat) for themes and feedback!
 
-Thyank you to everyone for motivating me to keep this project going! Could not do it without you!
+Thank you to everyone for motivating me to keep this project going! Could not do it without you!
 
 <img src="https://github.com/heyitszenithyt/zen-browser-badges/raw/fb14dcd72694b7176d141c774629df76af87514e/light/zen-badge-light.png" alt="Made For Zen Badge">
